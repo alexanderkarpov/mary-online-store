@@ -10,7 +10,7 @@ import java.util.List;
 @Component
 public class CategoriesServiceImpl implements CategoriesService {
 
-    private static List<Category> SAMPLE = Collections.unmodifiableList(
+    private static final List<Category> SAMPLE = Collections.unmodifiableList(
             Arrays.asList(
                     Category.newBuilder().setId(1).setName("Category 1").setDescription("description 1").build(),
                     Category.newBuilder().setId(2).setName("Category 2").setDescription("description 2").build(),
