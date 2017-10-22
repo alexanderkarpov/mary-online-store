@@ -11,5 +11,5 @@ Online Store Full Stack (Java 8, Spring Boot, AngularJS, Bootstrap)
 1. ```git clone https://github.com/alexanderkarpov/mary-online-store.git```
 2. ```cd mary-online-store```
 3. ```mvn spring-boot:run```
-4. visit ```localhost:8080```
-5. user: user, password: 111
+4. visit [localhost:8080](http://localhost:8080)
+5. user: ```user```, password: ```111```
