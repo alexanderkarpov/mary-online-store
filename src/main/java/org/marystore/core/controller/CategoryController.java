@@ -1,27 +1,25 @@
 package org.marystore.core.controller;
 
 import org.marystore.core.domain.Category;
-import org.marystore.core.service.CategoriesService;
+import org.marystore.core.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.PostConstruct;
-
 @RestController
-public class CategoriesController {
+public class CategoryController {
 
     @Autowired
-    private CategoriesService service;
+    private CategoryService service;
 
-    @RequestMapping(value = "/categories", method = RequestMethod.GET)
+    @RequestMapping(value = "/category/all", method = RequestMethod.GET)
     public Iterable<Category> getAll() {
         return service.getAll();
     }
 
-    @RequestMapping(value = "/categories/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/category/create", method = RequestMethod.POST)
     public void add(@RequestParam String name, @RequestParam String description, @RequestParam String image) {
         service.create(name, description, image);
     }

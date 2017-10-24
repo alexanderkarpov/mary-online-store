@@ -8,19 +8,16 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 @Component
-public class CategoriesServiceImpl implements CategoriesService {
+public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
     private CategoryRepository categoryRepository;
 
     @PostConstruct
     public void init() {
-        categoryRepository.deleteAll();
-
         create("Category 1", "Category 1 description", "http://placehold.it/700x400");
         create("Category 2", "Category 2 description", "http://placehold.it/700x400");
         create("Category 3", "Category 3 description", "http://placehold.it/700x400");
-        create("Category 4", "Category 4 description", "http://placehold.it/700x400");
     }
 
     @Override

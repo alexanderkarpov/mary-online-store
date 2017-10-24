@@ -2,7 +2,7 @@ package org.marystore.core.service;
 
 import org.marystore.core.domain.Category;
 
-public interface CategoriesService {
+public interface CategoryService {
 
     Iterable<Category> getAll();
 
