@@ -1,46 +1,50 @@
 package org.marystore.core.service;
 
 import org.marystore.core.domain.Category;
+import org.marystore.core.persistence.CategoryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import javax.annotation.PostConstruct;
 
 @Component
 public class CategoriesServiceImpl implements CategoriesService {
 
-    private static final List<Category> SAMPLE = Collections.unmodifiableList(
-            Arrays.asList(
-                    Category.newBuilder().setId(1).setName("Category 1").setDescription("description 1").build(),
-                    Category.newBuilder().setId(2).setName("Category 2").setDescription("description 2").build(),
-                    Category.newBuilder().setId(3).setName("Category 3").setDescription("description 3").build()
-            )
+    @Autowired
+    private CategoryRepository categoryRepository;
 
-    );
+    @PostConstruct
+    public void init() {
+        categoryRepository.deleteAll();
+
+        create("Category 1", "Category 1 description", "http://placehold.it/700x400");
+        create("Category 2", "Category 2 description", "http://placehold.it/700x400");
+        create("Category 3", "Category 3 description", "http://placehold.it/700x400");
+        create("Category 4", "Category 4 description", "http://placehold.it/700x400");
+    }
 
     @Override
-    public List<Category> getAll() {
-        return SAMPLE;
+    public Iterable<Category> getAll() {
+        return categoryRepository.findAll();
     }
 
     @Override
     public Category get(long id) {
-        return null;
+        return categoryRepository.findOne(id);
     }
 
     @Override
-    public Category create(String name, String description) {
-        return null;
+    public void create(String name, String description, String image) {
+        Category category = new Category();
+        category.setName(name);
+        category.setDescription(description);
+        category.setImage(image);
+        categoryRepository.save(category);
     }
 
     @Override
-    public void updateName(long id, String name) {
-
+    public void update(Category category) {
+        categoryRepository.save(category);
     }
 
-    @Override
-    public void updateDescription(long id, String description) {
-
-    }
 }

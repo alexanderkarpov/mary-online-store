@@ -2,38 +2,51 @@ package org.marystore.core.domain;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Category {
 
-    private final long id;
-    private final String name;
-    private final String description;
-    private final String imageSrc;
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
+    private String name;
+    private String description;
+    private String image;
 
-    public static Builder newBuilder() {
-        return new Builder();
-    }
-
-    private Category(long id, String name, String description, String imageSrc) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.imageSrc = imageSrc;
-    }
-
-    public long getId() {
+    public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getDescription() {
         return description;
     }
 
-    public String getImageSrc() {
-        return imageSrc;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override
@@ -42,43 +55,7 @@ public class Category {
                 .append("id", id)
                 .append("name", name)
                 .append("description", description)
-                .append("imageSrc", imageSrc)
+                .append("image", image)
                 .toString();
-    }
-
-    public static class Builder {
-
-        private long id;
-        private String name;
-        private String description;
-        private String imageSrc;
-
-        private Builder() {
-
-        }
-
-        public Builder setId(long id) {
-            this.id = id;
-            return this;
-        }
-
-        public Builder setName(String name) {
-            this.name = name;
-            return this;
-        }
-
-        public Builder setDescription(String description) {
-            this.description = description;
-            return this;
-        }
-
-        public Builder setImageSrc(String imageSrc) {
-            this.imageSrc = imageSrc;
-            return this;
-        }
-
-        public Category build() {
-            return new Category(id, name, description, imageSrc);
-        }
     }
 }
