@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    angular.module('storeApp', ['public'])
+    angular.module('storeApp', ['public', 'admin'])
         .config(config);
 
     config.$inject = ['$urlRouterProvider'];
