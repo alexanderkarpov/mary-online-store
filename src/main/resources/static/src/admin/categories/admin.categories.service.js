@@ -9,7 +9,16 @@
     function AdminCategoriesService($http) {
         var service = this;
         service.getData = function () {
-            return $http.get('/admin/category/all');
+            return $http({
+                method: "GET",
+                url: ("/admin/category/all")
+            }).then(function (response) {
+                return response.data;
+            }).catch(function (error) {
+                console.log("something went terribly wrong", error);
+            });
+
+            // return $http.get('/admin/category/all');
         }
     }
 

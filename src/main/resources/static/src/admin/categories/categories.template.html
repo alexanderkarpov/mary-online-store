@@ -1,2 +1,5 @@
-<p>admin categories list template</p>
-<p>categories: {{ $ctrl.items }}</p>
+<ul>
+    <li ng-repeat="item in $ctrl.items">
+        {{ item.id }} [{{ item.name }}] {{ item.description }}
+    </li>
+</ul>
