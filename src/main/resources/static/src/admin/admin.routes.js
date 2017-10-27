@@ -20,7 +20,13 @@
             })
             .state('admin.main.categories', {
                 url: '/admin/categories',
-                templateUrl: 'src/admin/categories/categories.html'
+                templateUrl: 'src/admin/categories/categories.html',
+                controller: 'AdminCategoriesController as categoriesList',
+                resolve: {
+                    categories: ['AdminCategoriesService', function (AdminCategoriesService) {
+                        return AdminCategoriesService.getData();
+                    }]
+                }
             })
             .state('admin.main.products', {
                 url: '/admin/products',
