@@ -1,5 +1,24 @@
-<ul>
-    <li ng-repeat="item in $ctrl.items">
-        {{ item.id }} [{{ item.name }}] {{ item.description }}
-    </li>
-</ul>
+<table class="table">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>description</th>
+        <th>image</th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="item in $ctrl.items">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.image }}</td>
+        <td>
+            <button type="button" class="btn btn-warning">Edit</button>
+            <button type="button" class="btn btn-danger">Remove</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
