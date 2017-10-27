@@ -9,7 +9,7 @@
     function ProductsService($http) {
         var service = this;
         service.getData = function () {
-            return $http.get('/product/all');
+            return $http.get('/user/product/all');
         }
     }
 })();

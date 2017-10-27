@@ -9,7 +9,7 @@
     function CategoriesService($http) {
         var service = this;
         service.getData = function () {
-            return $http.get('/category/all');
+            return $http.get('/user/category/all');
         }
     }
 })();
