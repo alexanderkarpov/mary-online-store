@@ -17,6 +17,14 @@
             .state('admin.main', {
                 url: '/admin',
                 templateUrl: 'src/admin/main/main.html'
+            })
+            .state('admin.main.categories', {
+                url: '/admin/categories',
+                templateUrl: 'src/admin/categories/categories.html'
+            })
+            .state('admin.main.products', {
+                url: '/admin/products',
+                templateUrl: 'src/admin/products/products.html'
             });
     }
 })();
