@@ -1,18 +1,24 @@
-<h3>new category</h3>
+<h4>new category</h4>
 <form ng-controller="AdminCategoryUpdateController as controller">
     <div class="form-group">
         <label for="category.name">Name:</label>
-        <input type="text" class="form-control" id="category.name">
+        <input type="text" class="form-control" id="category.name" ng-model="controller.category.name">
     </div>
     <div class="form-group">
         <label for="category.description">Description:</label>
-        <input type="text" class="form-control" id="category.description">
+        <textarea class="form-control" rows="5" id="category.description" ng-model="controller.category.description">
+        </textarea>
     </div>
     <div class="form-group">
-        <label for="category.image">Image:</label>
-        <input type="text" class="form-control" id="category.image">
+        <!--<label for="category.image">Image:</label>-->
+        <label for="category.image">
+            Image:
+        </label>
+        <input type="file" id="category.image" file-model="controller.category.image" hidden>
     </div>
 
     <button type="submit" class="btn btn btn-primary"
-    ng-click="controller.add()">Submit</button>
+            ui-sref="admin.main.categories"
+            ng-click="controller.add()">Submit
+    </button>
 </form>

@@ -4,9 +4,9 @@
     angular.module('admin')
         .service('AdminCategoriesService', AdminCategoriesService);
 
-    AdminCategoriesService.$inject = ['$http'];
+    AdminCategoriesService.$inject = ['$http', 'FileUploadService'];
 
-    function AdminCategoriesService($http) {
+    function AdminCategoriesService($http, FileUploadService) {
         var service = this;
         service.getData = function () {
             return $http({
@@ -21,6 +21,10 @@
 
         service.add = function (category) {
           console.log("add category", category);
+        };
+        
+        service.uploadImage = function (file) {
+            return FileUploadService.uploadFile(file, "/admin/category/create");
         }
     }
 
