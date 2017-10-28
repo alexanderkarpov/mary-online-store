@@ -13,3 +13,23 @@ body {
     padding-top: 56px;
   }
 }
+
+.bg-dark {
+  background-color: #343a40 !important;
+}
+
+a.bg-dark:focus, a.bg-dark:hover {
+  background-color: #1d2124 !important;
+}
+
+.py-5 {
+  padding-bottom: 3rem !important;
+}
+
+.text-white {
+  color: #fff !important;
+}
+
+#copyright {
+  margin-top: 7px;
+}
