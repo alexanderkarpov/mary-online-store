@@ -19,7 +19,7 @@
                 templateUrl: 'src/admin/main/main.html'
             })
             .state('admin.main.categories', {
-                url: '/admin/categories',
+                url: '/admin/categories/list',
                 templateUrl: 'src/admin/categories/categories.html',
                 controller: 'AdminCategoriesController as categoriesList',
                 resolve: {
@@ -28,6 +28,12 @@
                     }]
                 }
             })
+            .state('admin.main.addcategory', {
+                url: '/admin/categories/add',
+                templateUrl: 'src/admin/categories/category.add.form.html'
+            })
+
+
             .state('admin.main.products', {
                 url: '/admin/products',
                 templateUrl: 'src/admin/products/products.html'

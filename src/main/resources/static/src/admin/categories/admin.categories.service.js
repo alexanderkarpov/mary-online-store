@@ -17,8 +17,10 @@
             }).catch(function (error) {
                 console.log("something went terribly wrong", error);
             });
+        };
 
-            // return $http.get('/admin/category/all');
+        service.add = function (category) {
+          console.log("add category", category);
         }
     }
 
