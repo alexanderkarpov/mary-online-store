@@ -33,3 +33,9 @@ a.bg-dark:focus, a.bg-dark:hover {
 #copyright {
   margin-top: 7px;
 }
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  width: 100%;
+  margin: auto;
+}
