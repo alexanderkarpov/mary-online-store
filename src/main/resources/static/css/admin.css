@@ -1,4 +1,12 @@
-.main-admin-controller {
-    margin-bottom: 20px;
+#admin-page-header {
+    margin-top: 50px;
+}
+
+#admin-main-container {
+    margin-top: 15px;
+}
+
+#admin-tab-container {
     margin-top: 20px;
+    margin-bottom: 20px;
 }
