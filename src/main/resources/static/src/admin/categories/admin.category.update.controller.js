@@ -9,12 +9,13 @@
     function AdminCategoryUpdateController(AdminCategoriesService) {
         var controller = this;
 
-        controller.category = [];
+        controller.category = {};
+        controller.files = {};
 
         controller.add = function () {
             console.log("upload", controller.category);
 
-            AdminCategoriesService.uploadImage(controller.category.image)
+            AdminCategoriesService.add(controller.category, controller.files.image)
                 .then(function (response) {
                     console.log("successfully uploaded", response);
                 })

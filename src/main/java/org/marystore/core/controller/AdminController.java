@@ -4,6 +4,8 @@ import org.marystore.core.domain.Category;
 import org.marystore.core.domain.Product;
 import org.marystore.core.service.CategoryService;
 import org.marystore.core.service.ProductService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,6 +14,8 @@ import java.util.Optional;
 
 @RestController
 public class AdminController {
+
+    private final static Logger LOGGER = LoggerFactory.getLogger(AdminController.class);
 
     @Autowired
     private CategoryService categoryService;
@@ -29,16 +33,16 @@ public class AdminController {
         return productService.getAll();
     }
 
-    //https://stackoverflow.com/questions/29266971/mixed-post-submit-from-angularjs-to-spring-restcontroller
     @RequestMapping(value = "/admin/category/create", method = RequestMethod.POST)
-    public void addCategory(@RequestPart("file") MultipartFile file) {
-        try{
-            System.out.println("total bytes: " + file.getBytes().length);
+    public void addCategory(@RequestPart("metadata") Category category,
+                            @RequestPart("file") MultipartFile file) {
+        try {
+            LOGGER.info("total bytes {}", file.getBytes().length);
+            LOGGER.info("category {}", category);
 
         } catch (Exception ex) {
-            ex.printStackTrace();
+            LOGGER.error("can't read data", ex);
         }
-//        categoryService.create(name, description, image);
     }
 
     @RequestMapping("/admin/product/create")

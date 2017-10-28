@@ -18,13 +18,10 @@
                 console.log("something went terribly wrong", error);
             });
         };
-
-        service.add = function (category) {
-          console.log("add category", category);
-        };
         
-        service.uploadImage = function (file) {
-            return FileUploadService.uploadFile(file, "/admin/category/create");
+        service.add = function (category, imageFile) {
+            console.log("category", category);
+            return FileUploadService.uploadFile(imageFile, category, "/admin/category/create");
         }
     }
 
