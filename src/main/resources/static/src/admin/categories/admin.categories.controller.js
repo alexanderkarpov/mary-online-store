@@ -10,8 +10,8 @@
         var controller = this;
         controller.items = categories;
 
-        controller.remove = function (index) {
-            console.log("remove!!!", index);
+        controller.remove = function (id) {
+            console.log("remove!!!", id);
         };
     }
 
