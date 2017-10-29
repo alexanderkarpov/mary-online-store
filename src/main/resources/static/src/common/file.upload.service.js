@@ -28,8 +28,6 @@
         service.uploadFile = function (file, metadata, uploadUrl) {
             var fd = new FormData();
             fd.append('file', file);
-            console.log("metadata 1", metadata);
-            console.log("metadata 2", angular.toJson(metadata));
             fd.append('metadata', new Blob([angular.toJson(metadata)], {
                 type: "application/json"
             }));
