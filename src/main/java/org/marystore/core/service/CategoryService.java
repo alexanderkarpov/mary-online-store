@@ -1,6 +1,9 @@
 package org.marystore.core.service;
 
 import org.marystore.core.domain.Category;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 public interface CategoryService {
 
@@ -8,7 +11,7 @@ public interface CategoryService {
 
     Category get(long id);
 
-    void create(String name, String description, String image);
+    void create(String name, String description, MultipartFile file) throws IOException;
 
     void update(Category category);
 

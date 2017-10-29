@@ -2,6 +2,7 @@ package org.marystore.core.controller;
 
 import org.marystore.core.domain.Category;
 import org.marystore.core.domain.Product;
+import org.marystore.core.exceptions.ServerErrorException;
 import org.marystore.core.service.CategoryService;
 import org.marystore.core.service.ProductService;
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Optional;
 
 @RestController
@@ -37,11 +39,9 @@ public class AdminController {
     public void addCategory(@RequestPart("metadata") Category category,
                             @RequestPart("file") MultipartFile file) {
         try {
-            LOGGER.info("total bytes {}", file.getBytes().length);
-            LOGGER.info("category {}", category);
-
-        } catch (Exception ex) {
-            LOGGER.error("can't read data", ex);
+            categoryService.create(category.getName(), category.getDescription(), file);
+        } catch (IOException ex) {
+            throw new ServerErrorException("Can't create category", ex);
         }
     }
 
