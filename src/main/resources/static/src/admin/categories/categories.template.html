@@ -6,6 +6,7 @@
         <th>description</th>
         <th>image</th>
         <th></th>
+        <th></th>
     </tr>
     </thead>
 
@@ -14,11 +15,9 @@
         <td>{{ item.id }}</td>
         <td>{{ item.name }}</td>
         <td>{{ item.description }}</td>
-        <td>{{ item.image }}</td>
-        <td>
-            <button type="button" class="btn btn-warning">Edit</button>
-            <button type="button" class="btn btn-danger">Remove</button>
-        </td>
+        <td><img src="/user/category/{{item.id}}/large.jpg" alt="category img" height="80px"></td>
+        <td><button type="button" class="btn btn-warning">Edit</button></td>
+        <td><button type="button" class="btn btn-danger">Remove</button></td>
     </tr>
     </tbody>
 </table>

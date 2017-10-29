@@ -4,9 +4,9 @@
     angular.module('admin')
         .controller('AdminCategoryUpdateController', AdminCategoryUpdateController);
 
-    AdminCategoryUpdateController.$inject = ['AdminCategoriesService'];
+    AdminCategoryUpdateController.$inject = ['AdminCategoriesService', '$state'];
 
-    function AdminCategoryUpdateController(AdminCategoriesService) {
+    function AdminCategoryUpdateController(AdminCategoriesService, $state) {
         var controller = this;
 
         controller.category = {};
@@ -18,12 +18,25 @@
             AdminCategoriesService.add(controller.category, controller.files.image)
                 .then(function (response) {
                     console.log("successfully uploaded", response);
+                    $state.reload();
                 })
                 .catch(function (error) {
                     console.error("something went terribly wrong", error);
-                    // controller.categories = [];
+                });
+        };
+
+        controller.delete = function (id) {
+            AdminCategoriesService.delete(id)
+                .then(function (response) {
+                    console.log("successfully deleted", response);
+                    $state.reload();
+                })
+                .catch(function (error) {
+                    console.error("something went terribly wrong", error);
                 });
         }
+
+
 
     }
 

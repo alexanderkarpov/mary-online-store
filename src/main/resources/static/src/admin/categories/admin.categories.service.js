@@ -22,7 +22,14 @@
         service.add = function (category, imageFile) {
             console.log("category", category);
             return FileUploadService.uploadFile(imageFile, category, "/admin/category/create");
-        }
+        };
+        
+        service.delete = function (id) {
+            return $http({
+                method: "DELETE",
+                url: ("/admin/category/delete/" + id)
+            })
+        };
     }
 
 })();

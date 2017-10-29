@@ -45,6 +45,11 @@ public class AdminController {
         }
     }
 
+    @RequestMapping(value = "/admin/category/delete/{id}", method = RequestMethod.DELETE)
+    public void deleteCategory(@PathVariable long id) {
+        categoryService.delete(id);
+    }
+
     @RequestMapping("/admin/product/create")
     public void create(@RequestBody Product product) {
         productService.create(
