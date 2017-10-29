@@ -9,6 +9,10 @@
     function AdminCategoriesController(AdminCategoriesService, categories) {
         var controller = this;
         controller.items = categories;
+
+        controller.remove = function () {
+            console.log("remove!!!");
+        };
     }
 
 })();

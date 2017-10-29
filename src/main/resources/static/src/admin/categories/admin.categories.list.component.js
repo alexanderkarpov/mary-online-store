@@ -5,7 +5,8 @@
         .component('adminCategoriesList', {
             templateUrl: 'src/admin/categories/categories.template.html',
             bindings: {
-                items: '<'
+                items: '<',
+                onRemove: '&'
             }
         });
 
