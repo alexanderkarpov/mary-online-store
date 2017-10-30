@@ -42,6 +42,10 @@
                         return AdminProductsService.getByCategoryId($stateParams.categoryId);
                     }]
                 }
+            })
+            .state('admin.main.addproduct', {
+                url: '/admin/products/add',
+                templateUrl: 'src/admin/products/product.add.form.html'
             });
     }
 })();
