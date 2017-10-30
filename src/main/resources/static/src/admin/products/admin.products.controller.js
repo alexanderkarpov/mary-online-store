@@ -4,8 +4,11 @@
     angular.module('admin')
         .controller('AdminProductsController', AdminProductsController);
 
-    function AdminProductsController() {
+    AdminProductsController.$inject = ['products', 'AdminProductsService'];
 
+    function AdminProductsController(products, AdminProductsService) {
+        var controller = this;
+        controller.items = products;
     }
 
 })();

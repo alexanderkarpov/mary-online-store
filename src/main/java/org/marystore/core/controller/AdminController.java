@@ -57,6 +57,7 @@ public class AdminController {
 
     @RequestMapping(value = "/admin/product/get", method = RequestMethod.GET)
     public Iterable<Product> getProducts(@RequestParam Long categoryId) {
+        LOGGER.info("Load products by category {}", categoryId);
         return Optional.ofNullable(categoryId)
                 .map(productService::getByCategoryId)
                 .orElse(productService.getAll());

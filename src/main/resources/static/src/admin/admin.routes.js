@@ -34,7 +34,14 @@
 
             .state('admin.main.products', {
                 url: '/admin/products/{categoryId}',
-                templateUrl: 'src/admin/products/products.html'
+                templateUrl: 'src/admin/products/products.html',
+                controller: 'AdminProductsController as productsList',
+                resolve: {
+                    products: ['$stateParams', 'AdminProductsService', function ($stateParams, AdminProductsService) {
+                        console.log("categoryId", $stateParams.categoryId)
+                        return AdminProductsService.getByCategoryId($stateParams.categoryId);
+                    }]
+                }
             });
     }
 })();

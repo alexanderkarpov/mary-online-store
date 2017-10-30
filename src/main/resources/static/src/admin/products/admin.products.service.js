@@ -9,21 +9,11 @@
     function AdminProductsService($http, FileUploadService) {
         var service = this;
 
-        service.getAll = function () {
-            return $http({
-                method: "GET",
-                url: ("/admin/product/get")
-            }).then(function (response) {
-                return response.data;
-            }).catch(function (error) {
-                console.log("something went terribly wrong", error);
-            });
-        };
-
         service.getByCategoryId = function (categoryId) {
             return $http({
                 method: "GET",
-                url: ("/admin/product/get" + categoryId)
+                url: ("/admin/product/get"),
+                params: {categoryId: categoryId}
             }).then(function (response) {
                 return response.data;
             }).catch(function (error) {
