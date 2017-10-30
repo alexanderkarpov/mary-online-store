@@ -8,7 +8,6 @@
     routeConfig.$inject = ['$stateProvider'];
 
     function routeConfig($stateProvider) {
-        // Routes
         $stateProvider
             .state('admin', {
                 abstract: true,

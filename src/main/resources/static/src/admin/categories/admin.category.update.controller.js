@@ -24,20 +24,6 @@
                     console.error("something went terribly wrong", error);
                 });
         };
-
-        controller.delete = function (id) {
-            AdminCategoriesService.delete(id)
-                .then(function (response) {
-                    console.log("successfully deleted", response);
-                    $state.reload();
-                })
-                .catch(function (error) {
-                    console.error("something went terribly wrong", error);
-                });
-        }
-
-
-
     }
 
 })();

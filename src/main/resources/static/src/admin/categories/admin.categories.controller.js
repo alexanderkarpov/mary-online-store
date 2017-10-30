@@ -11,7 +11,6 @@
         controller.items = categories;
 
         controller.remove = function (id) {
-            console.log("remove!!!", id);
             AdminCategoriesService.delete(id)
                 .then(function (response) {
                     console.log("successfully deleted", response);
