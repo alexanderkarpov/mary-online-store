@@ -30,11 +30,6 @@ public class AdminController {
         return categoryService.getAll();
     }
 
-    @RequestMapping(value = "/admin/product/all", method = RequestMethod.GET)
-    public Iterable<Product> getAllProducts() {
-        return productService.getAll();
-    }
-
     @RequestMapping(value = "/admin/category/create", method = RequestMethod.POST)
     public void addCategory(@RequestPart("metadata") Category category,
                             @RequestPart("file") MultipartFile file) {
@@ -58,6 +53,13 @@ public class AdminController {
                 product.getTitle(), product.getShortDescription(),
                 product.getDescription(), product.getPrice(), product.getRate(),
                 product.getImage());
+    }
+
+    @RequestMapping(value = "/admin/product/get", method = RequestMethod.GET)
+    public Iterable<Product> getProducts(@RequestParam Long categoryId) {
+        return Optional.ofNullable(categoryId)
+                .map(productService::getByCategoryId)
+                .orElse(productService.getAll());
     }
 
 }

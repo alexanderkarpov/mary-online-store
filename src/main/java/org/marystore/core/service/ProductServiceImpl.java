@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Component
 public class ProductServiceImpl implements ProductService {
@@ -24,6 +24,14 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Iterable<Product> getAll() {
         return productRepository.findAll();
+    }
+
+    @Override
+    public Iterable<Product> getByCategoryId(long categoryId) {
+        //TODO: optimize this shit using Criteria
+        return StreamSupport.stream(productRepository.findAll().spliterator(), false)
+                .filter(p -> p.getId() == categoryId)
+                .collect(Collectors.toList());
     }
 
     @Override

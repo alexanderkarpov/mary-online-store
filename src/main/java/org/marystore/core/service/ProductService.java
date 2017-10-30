@@ -6,6 +6,8 @@ public interface ProductService {
 
     Iterable<Product> getAll();
 
+    Iterable<Product> getByCategoryId(long categoryId);
+
     Product get(long id);
 
     void create(long categoryId, String title, String shortDescription, String description, double price,

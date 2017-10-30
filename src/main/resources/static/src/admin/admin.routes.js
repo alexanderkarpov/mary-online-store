@@ -33,9 +33,8 @@
                 templateUrl: 'src/admin/categories/category.add.form.html'
             })
 
-
             .state('admin.main.products', {
-                url: '/admin/products',
+                url: '/admin/products/{categoryId}',
                 templateUrl: 'src/admin/products/products.html'
             });
     }
