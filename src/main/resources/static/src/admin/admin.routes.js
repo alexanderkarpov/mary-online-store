@@ -33,7 +33,7 @@
             })
 
             .state('admin.main.products', {
-                url: '/admin/products/{categoryId}',
+                url: '/admin/products/category/{categoryId}',
                 templateUrl: 'src/admin/products/products.html',
                 controller: 'AdminProductsController as productsList',
                 resolve: {
