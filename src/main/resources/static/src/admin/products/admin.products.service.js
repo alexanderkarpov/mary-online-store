@@ -22,7 +22,7 @@
         };
 
         service.add = function (product, imageFile) {
-            return FileUploadService.uploadFile(imageFile, category, "/admin/product/create");
+            return FileUploadService.uploadFile(imageFile, product, "/admin/product/create");
         };
 
         service.delete = function (id) {
