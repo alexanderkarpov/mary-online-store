@@ -17,15 +17,14 @@
     <tbody>
     <tr ng-repeat="item in $ctrl.items">
         <td>{{ item.id }}</td>
-        <td>{{ item.name }}</td>
+        <td>{{ item.title }}</td>
         <td>{{ item.shortDescription }}</td>
         <td>{{ item.description }}</td>
         <td>{{ item.price }}</td>
         <td>{{ item.rate }}</td>
         <td><img src="/user/product/{{item.id}}/large.jpg" alt="product img" height="80px"></td>
-        <td><a ui-sref="admin.main.products({categoryId: item.id})">products</a></td>
+        <td>{{ item.category.id }}</a></td>
         <td><button type="button" class="btn btn-warning">Edit</button></td>
-        <!--<td><button type="button" class="btn btn-danger">Remove</button></td>-->
         <td><button ng-click="$ctrl.onRemove({id: item.id})" type="button" class="btn btn-danger">Remove</button></td>
     </tr>
     </tbody>
