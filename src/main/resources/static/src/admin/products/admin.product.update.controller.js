@@ -9,9 +9,11 @@
     function AdminProductUpdateController(AdminProductsService, $stateParams, $state) {
         var controller = this;
 
-        controller.categoryId = $stateParams.categoryId;
         controller.product = {};
+        controller.product.category = {};
         controller.files = {};
+
+        controller.product.category.id = $stateParams.categoryId;
 
         controller.add = function () {
             console.log("upload", controller.product);

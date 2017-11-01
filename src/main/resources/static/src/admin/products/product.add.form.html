@@ -1,9 +1,27 @@
 <h4>new product</h4>
+<!--private long id;-->
+<!--private Category category;-->
+<!--private String title;-->
+<!--private String shortDescription;-->
+<!--private String description;-->
+<!--private double price;-->
+<!--private int rate;-->
+<!--private String image;-->
 <form ng-controller="AdminProductUpdateController as controller">
-    <h1>category: {{ controller.categoryId }}</h1>
+    <div class="form-group">
+        <label for="product.category.id">category id:</label>
+        <input type="text" class="form-control" id="product.category.id"
+               ng-model="controller.product.category.id" disabled>
+    </div>
     <div class="form-group">
         <label for="product.name">Name:</label>
-        <input type="text" class="form-control" id="product.name" ng-model="controller.product.name">
+        <input type="text" class="form-control" id="product.name" ng-model="controller.product.title">
+    </div>
+    <div class="form-group">
+        <label for="product.shortDescription">Short description:</label>
+        <textarea class="form-control" rows="2" id="product.shortDescription"
+                  ng-model="controller.product.shortDescription">
+        </textarea>
     </div>
     <div class="form-group">
         <label for="product.description">Description:</label>
@@ -11,7 +29,14 @@
         </textarea>
     </div>
     <div class="form-group">
-        <!--<label for="product.image">Image:</label>-->
+        <label for="product.price">Price:</label>
+        <input type="text" class="form-control" id="product.price" ng-model="controller.product.price">
+    </div>
+    <div class="form-group">
+        <label for="product.price">Rate:</label>
+        <input type="text" class="form-control" id="product.rate" ng-model="controller.product.rate">
+    </div>
+    <div class="form-group">
         <label for="product.image">
             Image:
         </label>
