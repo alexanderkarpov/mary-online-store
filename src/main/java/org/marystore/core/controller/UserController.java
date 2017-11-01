@@ -36,10 +36,22 @@ public class UserController {
 
     @RequestMapping(value = "/user/category/{categoryId}/large.jpg", method = RequestMethod.GET)
     public @ResponseBody
-    byte[] getLargeImage(@PathVariable long categoryId) throws IOException {
+    byte[] getLargeCategoryImage(@PathVariable long categoryId) throws IOException {
 
         String imgFile = Optional.ofNullable(categoryService.get(categoryId))
                 .map(Category::getImage)
+                .orElse(DEFAULT_IMG);
+
+        InputStream in = new FileInputStream(imgFile);
+        return IOUtils.toByteArray(in);
+    }
+
+    @RequestMapping(value = "/user/product/{productId}/large.jpg", method = RequestMethod.GET)
+    public @ResponseBody
+    byte[] getLargeProductImage(@PathVariable long productId) throws IOException {
+
+        String imgFile = Optional.ofNullable(productService.get(productId))
+                .map(Product::getImage)
                 .orElse(DEFAULT_IMG);
 
         InputStream in = new FileInputStream(imgFile);

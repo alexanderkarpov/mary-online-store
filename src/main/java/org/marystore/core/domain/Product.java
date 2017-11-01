@@ -10,7 +10,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Category category;
     private String title;
     private String shortDescription;

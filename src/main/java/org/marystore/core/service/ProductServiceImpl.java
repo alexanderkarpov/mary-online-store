@@ -38,8 +38,9 @@ public class ProductServiceImpl implements ProductService {
     public Iterable<Product> getByCategoryId(long categoryId) {
         //TODO: optimize this shit using Criteria
         return StreamSupport.stream(productRepository.findAll().spliterator(), false)
-                .filter(p -> p.getId() == categoryId)
+                .filter(p -> p.getCategory().getId() == categoryId)
                 .collect(Collectors.toList());
+//        return productRepository.findAll();
     }
 
     @Override
