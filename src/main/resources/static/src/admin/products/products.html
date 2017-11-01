@@ -1,3 +1,4 @@
-<h3>products !!!</h3>
 <admin-products-list></admin-products-list>
-<button type="button" class="btn btn-primary" ui-sref="admin.main.addproduct">Add</button>
+<div>{{ productsList.items }}</div>
+<button type="button" class="btn btn-primary"
+        ui-sref="admin.main.addproduct({categoryId: productsList.categoryId})">Add</button>
