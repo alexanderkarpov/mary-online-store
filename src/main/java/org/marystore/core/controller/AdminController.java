@@ -46,13 +46,19 @@ public class AdminController {
     }
 
     @RequestMapping("/admin/product/create")
-    public void create(@RequestBody Product product) {
-        productService.create(
-                Optional.ofNullable(product.getCategory().getId())
-                        .orElseThrow(() -> new IllegalArgumentException("category should be set")),
-                product.getTitle(), product.getShortDescription(),
-                product.getDescription(), product.getPrice(), product.getRate(),
-                product.getImage());
+    public void create(@RequestPart("metadata") Product product,
+                       @RequestPart("file") MultipartFile file) {
+        try {
+            productService.create(
+                    Optional.ofNullable(product.getCategory().getId())
+                            .orElseThrow(() -> new IllegalArgumentException("category should be set")),
+                    product.getTitle(), product.getShortDescription(),
+                    product.getDescription(), product.getPrice(), product.getRate(),
+                    file);
+
+        } catch (IOException ex) {
+            throw new ServerErrorException("Can't create category", ex);
+        }
     }
 
     @RequestMapping(value = "/admin/product/get", method = RequestMethod.GET)

@@ -38,7 +38,7 @@
                 controller: 'AdminProductsController as productsList',
                 resolve: {
                     products: ['$stateParams', 'AdminProductsService', function ($stateParams, AdminProductsService) {
-                        console.log("categoryId", $stateParams.categoryId)
+                        console.log("categoryId", $stateParams.categoryId);
                         return AdminProductsService.getByCategoryId($stateParams.categoryId);
                     }]
                 }

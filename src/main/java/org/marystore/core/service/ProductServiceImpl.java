@@ -5,8 +5,13 @@ import org.marystore.core.domain.Product;
 import org.marystore.core.persistence.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -20,6 +25,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private ImageNameService imageNameService;
 
     @Override
     public Iterable<Product> getAll() {
@@ -40,11 +48,19 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    @Transactional
     public void create(long categoryId, String title, String shortDescription, String description, double price,
-                       int rate, String image) {
+                       int rate, MultipartFile file) throws IOException {
         Category category = Optional.ofNullable(categoryService.get(categoryId))
                 .orElseThrow(() -> new IllegalArgumentException("Category " + categoryId + " not found"));
+
+        String fileName = imageNameService.getNextName(file.getOriginalFilename());
+        byte[] fileBytes = file.getBytes();
+        File imageFile = new File(fileName);
+        try (FileOutputStream fileOutputStream = new FileOutputStream(imageFile);
+             BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream)) {
+            bufferedOutputStream.write(fileBytes);
+            bufferedOutputStream.flush();
+        }
 
         Product product = new Product();
         product.setCategory(category);
@@ -53,7 +69,7 @@ public class ProductServiceImpl implements ProductService {
         product.setDescription(description);
         product.setPrice(price);
         product.setRate(rate);
-        product.setImage(image);
+        product.setImage(imageFile.getPath());
         product.setCategory(category);
 
         productRepository.save(product);
@@ -68,18 +84,5 @@ public class ProductServiceImpl implements ProductService {
 
         productRepository.save(product);
     }
-
-    /*
-    Product.newBuilder()
-                            .setId(6)
-                            .setCategoryId(1)
-                            .setTitle("Item Six")
-                            .setShortDescription("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!")
-                            .setDescription("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!")
-                            .setImage("http://placehold.it/700x400")
-                            .setPrice(199.99)
-                            .build()
-     */
-
 
 }
