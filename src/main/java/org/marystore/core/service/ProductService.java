@@ -17,4 +17,6 @@ public interface ProductService {
                 int rate, MultipartFile file) throws IOException;
 
     void update(Product product);
+
+    void delete(long id);
 }

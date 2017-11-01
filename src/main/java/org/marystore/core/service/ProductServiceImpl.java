@@ -3,6 +3,8 @@ package org.marystore.core.service;
 import org.marystore.core.domain.Category;
 import org.marystore.core.domain.Product;
 import org.marystore.core.persistence.ProductRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,6 +21,8 @@ import java.util.stream.StreamSupport;
 
 @Component
 public class ProductServiceImpl implements ProductService {
+
+    private final static Logger LOGGER = LoggerFactory.getLogger(ProductServiceImpl.class);
 
     @Autowired
     private ProductRepository productRepository;
@@ -84,6 +88,20 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(() -> new IllegalArgumentException("Category " + product.getCategory() + " not found"));
 
         productRepository.save(product);
+    }
+
+    @Override
+    public void delete(long id) {
+        Product product = productRepository.findOne(id);
+
+        if(product != null) {
+            File file = new File(product.getImage());
+            boolean deleted = file.delete();
+            if(!deleted) {
+                LOGGER.warn("file {} was't deleted", file.getAbsoluteFile().getPath());
+            }
+            productRepository.delete(id);
+        }
     }
 
 }
