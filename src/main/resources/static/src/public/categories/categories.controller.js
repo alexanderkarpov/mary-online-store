@@ -4,12 +4,14 @@
     angular.module('public')
         .controller('CategoriesController', CategoriesController);
 
-    CategoriesController.$inject = ['CategoriesService'];
+    CategoriesController.$inject = ['CategoriesService', '$stateParams'];
 
-    function CategoriesController(CategoriesService) {
+    function CategoriesController(CategoriesService, $stateParams) {
         var controller = this;
 
         controller.categories = [];
+
+        controller.categoryId = $stateParams.categoryId;
 
         CategoriesService.getData()
             .then(function (response) {

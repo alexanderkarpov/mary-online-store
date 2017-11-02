@@ -17,6 +17,10 @@
             .state('public.home', {
                 url: '/home',
                 templateUrl: 'src/public/home/home.html'
+            })
+            .state('public.category', {
+                url: '/category/{categoryId}',
+                templateUrl: 'src/public/categories/category.html'
             });
     }
 })();

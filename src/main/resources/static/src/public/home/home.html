@@ -9,7 +9,8 @@
             <div ng-controller="CategoriesController as controller" class="list-group">
 
                 <a ng-repeat="category in controller.categories"
-                   ui-sref="public.home" class="list-group-item">
+                   ui-sref="public.category({categoryId: category.id})"
+                   class="list-group-item">
                    {{ category.name }}
                 </a>
 
