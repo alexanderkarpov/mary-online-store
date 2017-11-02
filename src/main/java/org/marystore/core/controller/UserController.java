@@ -29,9 +29,19 @@ public class UserController {
         return categoryService.getAll();
     }
 
+    @RequestMapping(value = "/user/category/get", method = RequestMethod.GET)
+    public Category getSingleCategory(@RequestParam long categoryId) {
+        return categoryService.get(categoryId);
+    }
+
     @RequestMapping(value = "/user/product/all", method = RequestMethod.GET)
     public Iterable<Product> getAllProducts() {
         return productService.getAll();
+    }
+
+    @RequestMapping(value = "/user/product/get-by-category", method = RequestMethod.GET)
+    public Iterable<Product> getProductsByCategoryId(long categoryId) {
+        return productService.getByCategoryId(categoryId);
     }
 
     @RequestMapping(value = "/user/category/{categoryId}/large.jpg", method = RequestMethod.GET)
