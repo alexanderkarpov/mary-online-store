@@ -64,12 +64,13 @@ public class CategoryServiceImpl implements CategoryService {
     public void delete(long id) {
         Category category = categoryRepository.findOne(id);
         if(category != null) {
+            categoryRepository.delete(id);
             File file = new File(category.getImage());
             boolean deleted = file.delete();
             if(!deleted) {
                 LOGGER.warn("file {} was't deleted", file.getAbsoluteFile().getPath());
             }
-            categoryRepository.delete(id);
+
         }
 
     }

@@ -95,12 +95,13 @@ public class ProductServiceImpl implements ProductService {
         Product product = productRepository.findOne(id);
 
         if(product != null) {
+            productRepository.delete(id);
             File file = new File(product.getImage());
             boolean deleted = file.delete();
             if(!deleted) {
                 LOGGER.warn("file {} was't deleted", file.getAbsoluteFile().getPath());
             }
-            productRepository.delete(id);
+
         }
     }
 

@@ -11,7 +11,7 @@
                 <a ng-repeat="category in controller.categories"
                    ui-sref="public.category({categoryId: category.id})"
                    class="list-group-item">
-                   {{ category.name }}
+                    {{ category.name }}
                 </a>
 
             </div>
@@ -34,7 +34,9 @@
 
                     <div ng-repeat="category in controller.categories"
                          ng-class="{active:!$index}" class="item">
-                        <img src="/user/category/{{category.id}}/large.jpg" alt="slide" width="460" height="345">
+                        <img ui-sref="public.category({categoryId: category.id})"
+                             src="/user/category/{{category.id}}/large.jpg"
+                             alt="slide" width="460" height="345">
                         <div class="carousel-caption">
                             <h3>{{category.name}}</h3>
                             <p>{{category.description}}</p>
