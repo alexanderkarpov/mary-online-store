@@ -40,11 +40,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Iterable<Product> getByCategoryId(long categoryId) {
-        //TODO: optimize this shit using Criteria
         return StreamSupport.stream(productRepository.findAll().spliterator(), false)
                 .filter(p -> p.getCategory().getId() == categoryId)
                 .collect(Collectors.toList());
-//        return productRepository.findAll();
     }
 
     @Override
@@ -53,8 +51,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void create(long categoryId, String title, String shortDescription, String description, double price,
-                       int rate, MultipartFile file) throws IOException {
+    public void create(long categoryId, String code, String title, String shortDescription, String description,
+                       double price, int rate, MultipartFile file) throws IOException {
         Category category = Optional.ofNullable(categoryService.get(categoryId))
                 .orElseThrow(() -> new IllegalArgumentException("Category " + categoryId + " not found"));
 
@@ -69,10 +67,11 @@ public class ProductServiceImpl implements ProductService {
 
         Product product = new Product();
         product.setCategory(category);
+        product.setCode(code);
         product.setTitle(title);
         product.setShortDescription(shortDescription);
         product.setDescription(description);
-        product.setPrice(price);
+        product.setPrice((int)(price * 100));
         product.setRate(rate);
         product.setImage(imageFile.getPath());
         product.setCategory(category);

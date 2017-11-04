@@ -13,8 +13,8 @@ public interface ProductService {
 
     Product get(long id);
 
-    void create(long categoryId, String title, String shortDescription, String description, double price,
-                int rate, MultipartFile file) throws IOException;
+    void create(long categoryId, String code, String title, String shortDescription, String description,
+                double price, int rate, MultipartFile file) throws IOException;
 
     void update(Product product);
 

@@ -52,6 +52,7 @@ public class AdminController {
             productService.create(
                     Optional.ofNullable(product.getCategory().getId())
                             .orElseThrow(() -> new IllegalArgumentException("category should be set")),
+                    product.getCode(),
                     product.getTitle(), product.getShortDescription(),
                     product.getDescription(), product.getPrice(), product.getRate(),
                     file);

@@ -10,12 +10,15 @@ public class Product {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
+    @Column(name = "product_code", length = 10, unique = true)
+    private String code;
     @ManyToOne(fetch = FetchType.EAGER)
     private Category category;
     private String title;
     private String shortDescription;
+    @Column(length = 1024)
     private String description;
-    private double price;
+    private int price;
     private int rate;
     private String image;
 
@@ -25,6 +28,14 @@ public class Product {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public Category getCategory() {
@@ -59,11 +70,11 @@ public class Product {
         this.description = description;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -87,7 +98,7 @@ public class Product {
     public String toString() {
         return new ToStringBuilder(this)
                 .append("id", id)
-                .append("category", category)
+                .append("code", code)
                 .append("title", title)
                 .append("shortDescription", shortDescription)
                 .append("description", description)
