@@ -9,6 +9,7 @@ public interface ProductService {
 
     Iterable<Product> getAll();
 
+    @Deprecated
     Iterable<Product> getByCategoryId(long categoryId);
 
     Product get(long id);

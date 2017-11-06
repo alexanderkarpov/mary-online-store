@@ -12,7 +12,7 @@ public class Question {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
     private String text;
-    @OneToMany
+    @OneToMany(mappedBy="question")
     private List<Answer> answers;
 
     public long getId() {

@@ -14,7 +14,7 @@ public class Answer {
     private String text;
     @ManyToMany
     private List<Product> products;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Question question;
 
     public long getId() {
