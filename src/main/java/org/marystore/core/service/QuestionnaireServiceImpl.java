@@ -97,12 +97,13 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     @Override
     @Transactional
     public void deleteQuestion(long questionId) {
+        questionRepository.delete(questionId);
 
     }
 
     @Override
     @Transactional
     public void deleteAnswer(long answerId) {
-
+        answerRepository.delete(answerId);
     }
 }

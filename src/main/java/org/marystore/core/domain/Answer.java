@@ -12,6 +12,7 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(updatable = false)
     private long id;
+    @Column(name ="answer_text", length = 1024)
     private String text;
     @ManyToMany
     private List<Product> products;

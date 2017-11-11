@@ -51,8 +51,8 @@
             })
 
             //questionnaire
-            .state('admin.main.questionnaire', {
-                url: '/questionnaire/questions',
+            .state('admin.main.questions', {
+                url: '/questions',
                 templateUrl: 'src/admin/questionnaire/questions/questions.html',
                 controller: 'AdminQuestionsListController as questionsList',
                 resolve: {
@@ -61,8 +61,8 @@
                     }]
                 }
             })
-            .state('admin.main.questionnaire.addquestion', {
-                url: '/add',
+            .state('admin.main.addquestion', {
+                url: '/questions/add',
                 templateUrl: 'src/admin/questionnaire/questions/question.add.form.html'
             });
     }

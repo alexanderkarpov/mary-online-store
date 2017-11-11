@@ -1,6 +1,7 @@
 package org.marystore.core.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
@@ -11,7 +12,9 @@ public class CreateAnswerReqJson {
     private final List<Long> productIds;
 
     @JsonCreator
-    public CreateAnswerReqJson(long questionId, String text, List<Long> productIds) {
+    public CreateAnswerReqJson(@JsonProperty("questionId") long questionId,
+                               @JsonProperty("text") String text,
+                               @JsonProperty("productIds") List<Long> productIds) {
         this.questionId = questionId;
         this.text = text;
         this.productIds = productIds;

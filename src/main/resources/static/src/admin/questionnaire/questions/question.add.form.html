@@ -1,11 +1,13 @@
 <h4>new question</h4>
-<!--<form ng-controller="AdminQuestionsCreateController as controller">-->
-    <!--<div class="form-group">-->
-        <!--<label for="question.text">Text:</label>-->
-        <!--<input type="text" class="form-control" id="question.text" ng-model="controller.question.text">-->
-    <!--</div>-->
-    <!--<button type="submit" class="btn btn btn-primary"-->
-            <!--ui-sref="admin.main.questionnaire"-->
-            <!--ng-click="controller.add()">Submit-->
-    <!--</button>-->
+<form ng-controller="AdminQuestionsCreateController as controller">
+    <div class="form-group">
+        <label for="question.text">Text:</label>
+        <textarea class="form-control" rows="4" id="question.text"
+                  ng-model="controller.question.text">
+        </textarea>
+    </div>
+    <button type="submit" class="btn btn btn-primary"
+            ui-sref="admin.main.questions"
+            ng-click="controller.add()">Submit
+    </button>
 </form>

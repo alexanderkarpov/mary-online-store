@@ -23,10 +23,18 @@
         service.add = function (question) {
             return $http({
                 method: "POST",
-                url: ("/admin/questionnaire/question/create"),
+                url: ("/admin/questionnaire/question"),
                 data: question
             })
         };
+
+        service.delete = function (id) {
+            return $http({
+                method: "DELETE",
+                url: ("/admin/questionnaire/question"),
+                params: {id: id}
+            })
+        }
 
 
     }

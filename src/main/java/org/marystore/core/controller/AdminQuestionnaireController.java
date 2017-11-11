@@ -41,14 +41,19 @@ public class AdminQuestionnaireController {
         return answerTransformer.transform(questionnaireService.getAnswerById(id));
     }
 
-    @RequestMapping(value = "/admin/questionnaire/question/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/questionnaire/question", method = RequestMethod.POST)
     public void createQuestion(@RequestBody CreateQuestionReqJson req) {
         questionnaireService.createQuestion(req.getText());
     }
 
-    @RequestMapping(value = "/admin/questionnaire/answer/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/questionnaire/answer", method = RequestMethod.POST)
     public void createAnswer(@RequestBody CreateAnswerReqJson req) {
         questionnaireService.createAnswer(req.getQuestionId(), req.getText(), req.getProductIds());
+    }
+
+    @RequestMapping(value = "/admin/questionnaire/question", method = RequestMethod.DELETE)
+    public void deleteQuestion(@RequestParam long id) {
+        questionnaireService.deleteQuestion(id);
     }
 
 }
