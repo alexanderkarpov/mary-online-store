@@ -17,6 +17,8 @@
                 url: '/admin',
                 templateUrl: 'src/admin/main/main.html'
             })
+
+            //categories
             .state('admin.main.categories', {
                 url: '/categories/list',
                 templateUrl: 'src/admin/categories/categories.html',
@@ -32,6 +34,7 @@
                 templateUrl: 'src/admin/categories/category.add.form.html'
             })
 
+            //products
             .state('admin.main.products', {
                 url: '/products/category/{categoryId}',
                 templateUrl: 'src/admin/products/products.html',
@@ -45,6 +48,22 @@
             .state('admin.main.addproduct', {
                 url: '/products/category/{categoryId}/add',
                 templateUrl: 'src/admin/products/product.add.form.html'
+            })
+
+            //questionnaire
+            .state('admin.main.questionnaire', {
+                url: '/questionnaire/questions',
+                templateUrl: 'src/admin/questionnaire/questions/questions.html',
+                controller: 'AdminQuestionsListController as questionsList',
+                resolve: {
+                    questions: ['AdminQuestionsService', function (AdminQuestionsService) {
+                        return AdminQuestionsService.getAll();
+                    }]
+                }
+            })
+            .state('admin.main.questionnaire.addquestion', {
+                url: '/add',
+                templateUrl: 'src/admin/questionnaire/questions/question.add.form.html'
             });
     }
 })();
