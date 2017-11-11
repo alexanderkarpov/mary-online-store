@@ -67,7 +67,7 @@ public class ProductServiceImpl implements ProductService {
 
         Product product = new Product();
         product.setCategory(category);
-        product.setCode(code);
+        product.setCode(code.toUpperCase());
         product.setTitle(title);
         product.setShortDescription(shortDescription);
         product.setDescription(description);

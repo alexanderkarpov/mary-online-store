@@ -9,10 +9,11 @@ import java.util.List;
 public class Question {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(updatable = false)
     private long id;
     private String text;
-    @OneToMany(mappedBy="question")
+    @OneToMany(mappedBy="question", cascade = {CascadeType.REMOVE})
     private List<Answer> answers;
 
     public long getId() {

@@ -15,8 +15,9 @@ public class Product {
     @ManyToOne(fetch = FetchType.EAGER)
     private Category category;
     private String title;
-    private String shortDescription;
     @Column(length = 1024)
+    private String shortDescription;
+    @Column(length = 4096)
     private String description;
     private int price;
     private int rate;

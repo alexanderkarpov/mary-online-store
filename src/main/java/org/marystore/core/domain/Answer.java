@@ -10,11 +10,13 @@ public class Answer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(updatable = false)
     private long id;
     private String text;
     @ManyToMany
     private List<Product> products;
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "question_id", nullable = false)
     private Question question;
 
     public long getId() {
