@@ -67,7 +67,7 @@
             })
             .state('admin.main.answers', {
                 url: '/answers/{questionId}',
-                templateUrl: 'src/admin/questionnaire/answers/answers.html'
+                templateUrl: 'src/admin/questionnaire/answers/admin.answers.html'
             });
     }
 })();
