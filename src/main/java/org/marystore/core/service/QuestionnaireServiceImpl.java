@@ -41,6 +41,13 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     }
 
     @Override
+    public List<Answer> getAnswersByQuestionId(long questionId) {
+        return StreamSupport.stream(answerRepository.findAll().spliterator(), false)
+                .filter(a -> a.getQuestion().getId() == questionId)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     @Transactional
     public Question getQuestionById(long id) {
         return questionRepository.findOne(id);

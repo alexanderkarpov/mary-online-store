@@ -31,6 +31,12 @@ public class AdminQuestionnaireController {
                 .stream().map(questionTransformer::transform).collect(Collectors.toList());
     }
 
+    @RequestMapping(value = "/admin/questionnaire/answers/all")
+    public List<AnswerJson> getAnswersByQuestionId(@RequestParam long questionId) {
+        return questionnaireService.getAnswersByQuestionId(questionId).stream()
+                .map(answerTransformer::transform).collect(Collectors.toList());
+    }
+
     @RequestMapping(value = "/admin/questionnaire/question", method = RequestMethod.GET)
     public QuestionJson getQuestionById(@RequestParam long id) {
         return questionTransformer.transform(questionnaireService.getQuestionById(id));

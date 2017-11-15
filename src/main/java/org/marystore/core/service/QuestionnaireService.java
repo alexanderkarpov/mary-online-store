@@ -9,6 +9,8 @@ public interface QuestionnaireService {
 
     List<Question> getAllQuestions();
 
+    List<Answer> getAnswersByQuestionId(long questionId);
+
     Question getQuestionById(long id);
 
     Answer getAnswerById(long id);

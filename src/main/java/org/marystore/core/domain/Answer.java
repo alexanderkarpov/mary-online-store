@@ -3,6 +3,7 @@ package org.marystore.core.domain;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.*;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -16,7 +17,7 @@ public class Answer {
     private String text;
     @ManyToMany
     private List<Product> products;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "question_id", nullable = false)
     private Question question;
 
