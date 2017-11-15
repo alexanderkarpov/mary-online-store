@@ -20,6 +20,18 @@
             });
         };
 
+        service.getById = function (id) {
+            return $http({
+                method: "GET",
+                url: ("/admin/questionnaire/question"),
+                params: {id: id}
+            }).then(function (response) {
+                return response.data;
+            }).catch(function (error) {
+                console.log("something went terribly wrong", error);
+            });
+        };
+
         service.add = function (question) {
             return $http({
                 method: "POST",

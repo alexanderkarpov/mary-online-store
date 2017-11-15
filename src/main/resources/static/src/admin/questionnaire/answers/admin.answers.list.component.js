@@ -4,9 +4,9 @@
 
     angular.module('admin')
         .component('adminAnswersList', {
-            templateUrl: 'src/admin/questionnaire/answers/answers.list.template.html',
+            templateUrl: 'src/admin/questionnaire/answers/admin.answers.list.template.html',
             bindings: {
-                items: '<',
+                question: '<',
                 onRemove: '&'
             }
         });

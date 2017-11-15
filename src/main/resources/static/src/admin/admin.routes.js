@@ -67,7 +67,12 @@
             })
             .state('admin.main.answers', {
                 url: '/answers/{questionId}',
-                templateUrl: 'src/admin/questionnaire/answers/admin.answers.html'
+                templateUrl: 'src/admin/questionnaire/answers/admin.answers.html',
+                resolve: {
+                    question: ['$stateParams', 'AdminQuestionsService', function ($stateParams, AdminQuestionsService) {
+                        return AdminQuestionsService.getById($stateParams.questionId);
+                    }]
+                }
             });
     }
 })();
