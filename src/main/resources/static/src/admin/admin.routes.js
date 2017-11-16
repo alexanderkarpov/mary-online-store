@@ -68,9 +68,11 @@
             .state('admin.main.answers', {
                 url: '/answers/{questionId}',
                 templateUrl: 'src/admin/questionnaire/answers/admin.answers.html',
+                controller: 'AdminAnswersListController as answersList',
                 resolve: {
                     question: ['$stateParams', 'AdminQuestionsService', function ($stateParams, AdminQuestionsService) {
                         return AdminQuestionsService.getById($stateParams.questionId);
+                        // return AdminQuestionsService.getAll();
                     }]
                 }
             });
