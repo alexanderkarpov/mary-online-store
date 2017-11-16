@@ -75,6 +75,10 @@
                         // return AdminQuestionsService.getAll();
                     }]
                 }
+            })
+            .state('admin.main.addanswer', {
+                url: '/answers/{questionId}/add',
+                templateUrl: 'src/admin/questionnaire/answers/admin.answers.add.form.html'
             });
     }
 })();
