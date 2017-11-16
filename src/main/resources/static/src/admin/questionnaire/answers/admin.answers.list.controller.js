@@ -5,9 +5,9 @@
     angular.module('admin')
         .controller('AdminAnswersListController', AdminAnswersListController);
 
-    AdminAnswersListController.$inject = ['question', 'AdminQuestionsService'];
+    AdminAnswersListController.$inject = ['question', 'AdminQuestionsService', 'AdminAnswersService'];
 
-    function AdminAnswersListController(question, AdminQuestionsService) {
+    function AdminAnswersListController(question, AdminQuestionsService, AdminAnswersService) {
         var controller = this;
 
         controller.question = question;

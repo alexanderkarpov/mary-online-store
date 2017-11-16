@@ -2,7 +2,7 @@
 
     'use strict';
 
-    angular.moule('admin')
+    angular.module('admin')
         .service('AdminAnswersService', AdminAnswersService);
 
     AdminAnswersService.$inject = ['$http'];
