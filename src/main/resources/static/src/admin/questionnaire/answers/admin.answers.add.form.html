@@ -11,23 +11,17 @@
         <input type="text" class="form-control" id="answer.text" ng-model="controller.answer.text">
     </div>
 
-    <!--<label for="checkBox">test</label>-->
-    <!--<input id="checkBox" type="checkbox">-->
     <div class="form-group">
-    <span ng-repeat="product in controller.products">
+    <span ng-repeat="product in controller.products"
+          data-toggle="tooltip" data-placement="top" title="{{ product.title }}"
+          class="admin-product-code"
+    >
         <input id="{{ product.id }}" type="checkbox">
-        <label for="{{ product.id }}" data-toggle="tooltip" data-placement="top" title="{{ product.title }}">
+        <label class="badge" for="{{ product.id }}" >
             {{ product.code }}
         </label>
     </span>
     </div>
-
-    <script>
-        $(document).ready(function () {
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
-
 
     <button type="submit" class="btn btn btn-primary">Submit</button>
 </form>
