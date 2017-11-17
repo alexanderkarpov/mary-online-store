@@ -16,9 +16,17 @@
     <div class="form-group">
     <span ng-repeat="product in controller.products">
         <input id="{{ product.id }}" type="checkbox">
-        <label for="{{ product.id }}">{{ product.code }}</label>
+        <label for="{{ product.id }}" data-toggle="tooltip" data-placement="top" title="{{ product.title }}">
+            {{ product.code }}
+        </label>
     </span>
     </div>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 
 
     <button type="submit" class="btn btn btn-primary">Submit</button>
