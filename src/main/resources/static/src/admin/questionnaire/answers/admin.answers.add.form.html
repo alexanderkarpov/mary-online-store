@@ -16,7 +16,7 @@
           data-toggle="tooltip" data-placement="top" title="{{ product.title }}"
           class="admin-product-code"
     >
-        <input id="{{ product.id }}" type="checkbox" ng-model="controller.answer.products[product.id]">
+        <input id="{{ product.id }}" type="checkbox" ng-model="controller.productsIndices[$index]">
         <label class="badge" for="{{ product.id }}">
             {{ product.code }}
         </label>

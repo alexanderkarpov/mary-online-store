@@ -13,12 +13,13 @@
 
         controller.answer = {};
         controller.answer.questionId = $stateParams.questionId;
-        controller.answer.products = [];
+        controller.productsIndices = [];
         controller.products = [];
 
         AdminProductsService.getAll()
             .then(function (data) {
                 controller.products = data;
+                controller.productsIndices = data.map(p => false);
                 console.log("products loaded", data);
                 // $state.reload();
             })
@@ -28,12 +29,17 @@
 
         controller.add = function () {
             console.log("answer", controller.answer);
-            console.log("answer.products", controller.answer.products);
+            console.log("controller.productsIndices",  controller.productsIndices.length);
 
-            console.log("controller.answer.products.length",  controller.answer.products.length);
-            for (var i = 0; i < controller.answer.products.length; i++) {
-                console.log("i=" + i, controller.answer.products[i]);
+            controller.answer.products = [];
+            for (var i = 0; i < controller.productsIndices.length; i++) {
+
+                if(controller.productsIndices[i]) {
+                    controller.answer.products.push(controller.products[i].id);
+                }
             }
+
+            console.log("answer.products", controller.answer.products);
         }
 
     }
