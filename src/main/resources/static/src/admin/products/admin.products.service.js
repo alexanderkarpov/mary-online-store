@@ -21,6 +21,17 @@
             });
         };
 
+        service.getAll = function (){
+            return $http({
+                method: "GET",
+                url: ("/admin/product/getall")
+            }).then(function (response) {
+                return response.data;
+            }).catch(function (error) {
+                console.log("something went terribly wrong", error);
+            });
+        };
+
         service.add = function (product, imageFile) {
             return FileUploadService.uploadFile(imageFile, product, "/admin/product/create");
         };

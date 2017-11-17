@@ -1,1 +1,25 @@
-<p>add answer form</p>
+<h4>new answer</h4>
+<form ng-controller="AdminAnswersAddFormController as controller">
+    <div class="form-group">
+        <label for="answer.question.id">question id:</label>
+        <input type="text" class="form-control" id="answer.question.id"
+               ng-model="controller.answer.questionId" disabled>
+    </div>
+
+    <div class="form-group">
+        <label for="answer.text">Text:</label>
+        <input type="text" class="form-control" id="answer.text" ng-model="controller.answer.text">
+    </div>
+
+    <!--<label for="checkBox">test</label>-->
+    <!--<input id="checkBox" type="checkbox">-->
+    <div class="form-group">
+    <span ng-repeat="product in controller.products">
+        <input id="{{ product.id }}" type="checkbox">
+        <label for="{{ product.id }}">{{ product.code }}</label>
+    </span>
+    </div>
+
+
+    <button type="submit" class="btn btn btn-primary">Submit</button>
+</form>

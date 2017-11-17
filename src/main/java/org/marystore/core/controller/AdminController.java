@@ -70,6 +70,12 @@ public class AdminController {
                 .orElse(productService.getAll());
     }
 
+    @RequestMapping(value = "/admin/product/getall", method = RequestMethod.GET)
+    public Iterable<Product> getAllProducts() {
+        LOGGER.info("Load all products");
+        return productService.getAll();
+    }
+
     @RequestMapping(value = "/admin/product/delete/{id}", method = RequestMethod.DELETE)
     public void deleteProduct(@PathVariable long id) {
         productService.delete(id);
