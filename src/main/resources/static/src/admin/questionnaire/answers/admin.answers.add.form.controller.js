@@ -13,6 +13,7 @@
 
         controller.answer = {};
         controller.answer.questionId = $stateParams.questionId;
+        controller.answer.products = [];
         controller.products = [];
 
         AdminProductsService.getAll()
@@ -25,6 +26,15 @@
                 console.log("something went terribly wrong", error);
             });
 
+        controller.add = function () {
+            console.log("answer", controller.answer);
+            console.log("answer.products", controller.answer.products);
+
+            console.log("controller.answer.products.length",  controller.answer.products.length);
+            for (var i = 0; i < controller.answer.products.length; i++) {
+                console.log("i=" + i, controller.answer.products[i]);
+            }
+        }
 
     }
 

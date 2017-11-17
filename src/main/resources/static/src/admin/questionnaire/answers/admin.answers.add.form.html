@@ -16,12 +16,20 @@
           data-toggle="tooltip" data-placement="top" title="{{ product.title }}"
           class="admin-product-code"
     >
-        <input id="{{ product.id }}" type="checkbox">
-        <label class="badge" for="{{ product.id }}" >
+        <input id="{{ product.id }}" type="checkbox" ng-model="controller.answer.products[product.id]">
+        <label class="badge" for="{{ product.id }}">
             {{ product.code }}
         </label>
     </span>
     </div>
 
-    <button type="submit" class="btn btn btn-primary">Submit</button>
+    <!--<div class="form-group">-->
+        <!--<label for="answer.checkbox">Text:</label>-->
+        <!--<input type="checkbox" class="form-control" id="answer.checkbox"-->
+               <!--ng-model="controller.answer.checkbox">-->
+    <!--</div>-->
+
+    <button type="submit" class="btn btn btn-primary"
+            ng-click="controller.add()">Submit
+    </button>
 </form>
