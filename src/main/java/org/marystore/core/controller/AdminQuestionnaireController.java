@@ -62,4 +62,9 @@ public class AdminQuestionnaireController {
         questionnaireService.deleteQuestion(id);
     }
 
+    @RequestMapping(value = "/admin/questionnaire/answer", method = RequestMethod.DELETE)
+    public void deleteAnswer(@RequestParam long id) {
+        questionnaireService.deleteAnswer(id);
+    }
+
 }

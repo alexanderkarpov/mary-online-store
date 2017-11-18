@@ -27,6 +27,12 @@
             data: createAnswerReq
         });
 
+        service.delete = answerId => $http({
+           method: "DELETE",
+           url: ("/admin/questionnaire/answer"),
+           params: {id: answerId}
+        });
+
 
     }
 
