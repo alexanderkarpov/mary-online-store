@@ -76,7 +76,7 @@
                 }
             })
             .state('admin.main.answers.addanswer', {
-                url: '/answers/{questionId}/add',
+                url: '/add',
                 templateUrl: 'src/admin/questionnaire/answers/admin.answers.add.form.html'
             });
     }

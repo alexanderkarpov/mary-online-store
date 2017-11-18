@@ -1,4 +1,6 @@
 <form ng-controller="AdminAnswersAddFormController as controller">
+    <p>questionId: {{controller.answer.questionId}}</p>
+
     <div class="form-group">
         <label for="answer.text">Text:</label>
         <input type="text" class="form-control" id="answer.text" ng-model="controller.answer.text">
