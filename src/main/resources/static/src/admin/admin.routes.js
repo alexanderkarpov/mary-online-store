@@ -82,6 +82,13 @@
             .state('admin.main.answers.addanswer', {
                 url: '/add',
                 templateUrl: 'src/admin/questionnaire/answers/admin.answers.add.form.html'
+            })
+
+            //Carousel
+            .state('admin.main.carousel', {
+                url: '/carousel',
+                templateUrl: 'src/admin/carousel/admin.carousel.html'
             });
+
     }
 })();
