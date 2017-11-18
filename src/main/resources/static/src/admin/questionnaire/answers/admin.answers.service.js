@@ -9,19 +9,24 @@
 
     function AdminAnswersService($http) {
 
-        var service = this;
+        const service = this;
 
-        service.getByQuestionId = function (questionId) {
+        service.getByQuestionId = questionId => {
             return $http({
                 method: "GET",
                 url: ("/admin/questionnaire/answers"),
                 params: {questionId: questionId}
-            }).then(function (response) {
-                return response.data;
-            }).catch(function (error) {
-                console.log("something went terribly wrong", error);
-            });
-        }
+            })
+                .then(response => response.data)
+                .catch(error => console.log("something went terribly wrong", error));
+        };
+
+        service.add = createAnswerReq => $http({
+            method: "POST",
+            url: ("/admin/questionnaire/answer"),
+            data: createAnswerReq
+        });
+
 
     }
 

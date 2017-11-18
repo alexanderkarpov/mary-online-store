@@ -12,7 +12,7 @@ public class AnswerTransformer {
 
     public AnswerJson transform(Answer src) {
         return AnswerJson.of(src.getId(), src.getText(),
-                src.getProducts().stream().map(p -> ProductLiteJson.of(p.getId(), p.getCode()))
+                src.getProducts().stream().map(p -> ProductLiteJson.of(p.getId(), p.getCode(), p.getTitle()))
                         .collect(Collectors.toList()));
 
     }

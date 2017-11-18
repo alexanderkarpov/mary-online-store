@@ -1,4 +1,4 @@
-(function () {
+(() => {
 
     'use strict';
 
@@ -9,7 +9,7 @@
         ['AdminAnswersService', 'AdminProductsService', '$stateParams', '$state'];
 
     function AdminAnswersAddFormController(AdminAnswersService, AdminProductsService, $stateParams, $state) {
-        var controller = this;
+        const controller = this;
 
         controller.answer = {};
         controller.answer.questionId = $stateParams.questionId;
@@ -17,29 +17,37 @@
         controller.products = [];
 
         AdminProductsService.getAll()
-            .then(function (data) {
+            .then(data => {
                 controller.products = data;
                 controller.productsIndices = data.map(p => false);
                 console.log("products loaded", data);
-                // $state.reload();
             })
-            .catch(function (error) {
-                console.log("something went terribly wrong", error);
-            });
+            .catch(error => console.log("something went terribly wrong", error));
 
-        controller.add = function () {
+
+        controller.add = () => {
             console.log("answer", controller.answer);
-            console.log("controller.productsIndices",  controller.productsIndices.length);
+            console.log("controller.productsIndices", controller.productsIndices.length);
 
-            controller.answer.products = [];
-            for (var i = 0; i < controller.productsIndices.length; i++) {
+            controller.answer.productIds = [];
+            for (let i = 0; i < controller.productsIndices.length; i++) {
 
-                if(controller.productsIndices[i]) {
-                    controller.answer.products.push(controller.products[i].id);
+                if (controller.productsIndices[i]) {
+                    controller.answer.productIds.push(controller.products[i].id);
                 }
             }
 
-            console.log("answer.products", controller.answer.products);
+            console.log("answer.productIds", controller.answer.productIds);
+
+            AdminAnswersService.add(controller.answer);
+                // .then(response => {
+                //     console.log("successfully created", response);
+                //     $state.reload();
+                // })
+                // .catch(error => {
+                //     console.error("something went terribly wrong", error);
+                //     $state.reload();
+                // });
         }
 
     }
