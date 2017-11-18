@@ -39,15 +39,15 @@
 
             console.log("answer.productIds", controller.answer.productIds);
 
-            AdminAnswersService.add(controller.answer);
-                // .then(response => {
-                //     console.log("successfully created", response);
-                //     $state.reload();
-                // })
-                // .catch(error => {
-                //     console.error("something went terribly wrong", error);
-                //     $state.reload();
-                // });
+            AdminAnswersService.add(controller.answer)
+                .then(response => {
+                    console.log("successfully created", response);
+                    $state.reload();
+                })
+                .catch(error => {
+                    console.error("something went terribly wrong", error);
+                    $state.reload();
+                });
         }
 
     }

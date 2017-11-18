@@ -72,7 +72,6 @@
                 resolve: {
                     question: ['$stateParams', 'AdminQuestionsService', function ($stateParams, AdminQuestionsService) {
                         return AdminQuestionsService.getById($stateParams.questionId);
-                        // return AdminQuestionsService.getAll();
                     }]
                 }
             })

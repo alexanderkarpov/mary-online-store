@@ -11,15 +11,15 @@
 
         const service = this;
 
-        service.getByQuestionId = questionId => {
-            return $http({
+        service.getByQuestionId = questionId =>
+            $http({
                 method: "GET",
                 url: ("/admin/questionnaire/answers"),
                 params: {questionId: questionId}
             })
                 .then(response => response.data)
                 .catch(error => console.log("something went terribly wrong", error));
-        };
+
 
         service.add = createAnswerReq => $http({
             method: "POST",
