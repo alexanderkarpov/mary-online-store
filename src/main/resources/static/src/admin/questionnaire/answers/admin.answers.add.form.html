@@ -13,21 +13,14 @@
 
     <div class="form-group">
     <span ng-repeat="product in controller.products"
-          data-toggle="tooltip" data-placement="top" title="{{ product.title }}"
-          class="admin-product-code"
-    >
+          data-toggle="tooltip" title="{{ product.title }}"
+          class="admin-product-code">
         <input id="{{ product.id }}" type="checkbox" ng-model="controller.productsIndices[$index]">
         <label class="badge" for="{{ product.id }}">
             {{ product.code }}
         </label>
     </span>
     </div>
-
-    <!--<div class="form-group">-->
-        <!--<label for="answer.checkbox">Text:</label>-->
-        <!--<input type="checkbox" class="form-control" id="answer.checkbox"-->
-               <!--ng-model="controller.answer.checkbox">-->
-    <!--</div>-->
 
     <button type="submit" class="btn btn btn-primary"
             ui-sref="admin.main.answers({questionId: controller.answer.questionId})"

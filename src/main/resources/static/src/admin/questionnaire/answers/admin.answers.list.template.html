@@ -1,1 +1,30 @@
-<div>{{ $ctrl.answers }}</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>text</th>
+        <th>products</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="answer in $ctrl.answers">
+        <td>{{ answer.id }}</td>
+        <td>{{ answer.text }}</td>
+        <td>
+            <span ng-repeat="product in answer.products" class="badge admin-product-code"
+                  data-toggle="tooltip" title="{{ product.title }}">
+                {{ product.code }}
+            </span>
+        </td>
+        <td>
+            <button type="button" class="btn btn-warning">Edit</button>
+        </td>
+        <td>
+            <button ng-click="$ctrl.onRemove({id: answer.id})" type="button" class="btn btn-danger">Remove</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
