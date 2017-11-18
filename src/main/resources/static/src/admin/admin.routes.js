@@ -75,7 +75,7 @@
                     }]
                 }
             })
-            .state('admin.main.addanswer', {
+            .state('admin.main.answers.addanswer', {
                 url: '/answers/{questionId}/add',
                 templateUrl: 'src/admin/questionnaire/answers/admin.answers.add.form.html'
             });

@@ -1,11 +1,4 @@
-<h4>new answer</h4>
 <form ng-controller="AdminAnswersAddFormController as controller">
-    <div class="form-group">
-        <label for="answer.question.id">question id:</label>
-        <input type="text" class="form-control" id="answer.question.id"
-               ng-model="controller.answer.questionId" disabled>
-    </div>
-
     <div class="form-group">
         <label for="answer.text">Text:</label>
         <input type="text" class="form-control" id="answer.text" ng-model="controller.answer.text">
@@ -24,6 +17,12 @@
 
     <button type="submit" class="btn btn btn-primary"
             ui-sref="admin.main.answers({questionId: controller.answer.questionId})"
-            ng-click="controller.add()">Submit
+            ng-click="controller.add()">
+        Submit
+    </button>
+
+    <button type="submit" class="btn btn btn-danger"
+            ui-sref="admin.main.answers({questionId: controller.answer.questionId})">
+        Cancel
     </button>
 </form>
