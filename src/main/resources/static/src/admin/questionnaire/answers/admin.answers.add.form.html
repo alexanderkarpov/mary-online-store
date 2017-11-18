@@ -1,5 +1,5 @@
 <form ng-controller="AdminAnswersAddFormController as controller">
-    <p>questionId: {{controller.answer.questionId}}</p>
+    <!--<p>questionId: {{controller.answer.questionId}}</p>-->
 
     <div class="form-group">
         <label for="answer.text">Text:</label>
@@ -18,13 +18,13 @@
     </div>
 
     <button type="submit" class="btn btn btn-primary"
-            ui-sref="admin.main.answers({questionId: controller.answer.questionId})"
+            ui-sref="admin.main.answers.addbutton({questionId: controller.answer.questionId})"
             ng-click="controller.add()">
         Submit
     </button>
 
     <button type="submit" class="btn btn btn-danger"
-            ui-sref="admin.main.answers({questionId: controller.answer.questionId})">
+            ui-sref="admin.main.answers.addbutton({questionId: controller.answer.questionId})">
         Cancel
     </button>
 </form>

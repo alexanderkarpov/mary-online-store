@@ -5,7 +5,12 @@
         answers="answersList.question.answers"
         on-remove="answersList.remove(id)">
 </admin-answers-list>
-<button type="button" class="btn btn-primary"
-        ui-sref=".addanswer({questionId: answersList.question.id})">Add
-</button>
+
 <ui-view></ui-view>
+<hr>
+<button type="button" class="btn btn-primary"
+        ui-sref="admin.main.questions">
+    <!--<span class="glyphicon glyphicon-search"></span>-->
+    <span class="glyphicon glyphicon-arrow-left"></span>
+    back to the questions list
+</button>
