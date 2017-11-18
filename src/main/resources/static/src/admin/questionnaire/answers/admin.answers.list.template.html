@@ -20,10 +20,14 @@
             </span>
         </td>
         <td>
-            <button type="button" class="btn btn-warning">Edit</button>
+            <button type="button" class="btn btn-warning">
+                <span class="glyphicon glyphicon-edit"></span>
+            </button>
         </td>
         <td>
-            <button ng-click="$ctrl.onRemove({id: answer.id})" type="button" class="btn btn-danger">Remove</button>
+            <button ng-click="$ctrl.onRemove({id: answer.id})" type="button" class="btn btn-danger">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
         </td>
     </tr>
     </tbody>
