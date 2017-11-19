@@ -88,7 +88,18 @@
             .state('admin.main.carousel', {
                 url: '/carousel',
                 templateUrl: 'src/admin/carousel/admin.carousel.html'
-            });
+            })
+            .state('admin.main.carousel.item', {
+                url: '/{carouselItemType}',
+                templateUrl: 'src/admin/carousel/admin.carousel.item.update.form.html',
+                controller: 'AdminCarouselItemUpdateFormController as formController',
+                resolve: {
+                    carouselItem: ['$stateParams', 'AdminCarouselService',
+                        function ($stateParams, AdminCarouselService) {
+                            return AdminCarouselService.get($stateParams.carouselItemType);
+                        }]
+                }
+            })
 
     }
 })();

@@ -20,6 +20,7 @@ public class AdminCarouselController {
     @Autowired
     private CarouselService carouselService;
 
+    @Autowired
     private CarouselItemTransformer transformer;
 
     @RequestMapping(value = "/admin/carousel/questionnaire", method = RequestMethod.GET)
