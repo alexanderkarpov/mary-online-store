@@ -1,8 +1,7 @@
 package org.marystore.core.dto;
 
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
-
-import java.util.Optional;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CarouselItemJson {
 
@@ -10,10 +9,13 @@ public class CarouselItemJson {
     private final String description;
     private final String image;
 
-    private CarouselItemJson(Builder builder) {
-        this.title = Optional.ofNullable(builder.title).orElse("");
-        this.description = Optional.ofNullable(builder.description).orElse("");
-        this.image = Optional.ofNullable(builder.image).orElse("");
+    @JsonCreator
+    public CarouselItemJson(@JsonProperty("title") String title,
+                            @JsonProperty("description") String description,
+                            @JsonProperty("image") String image) {
+        this.title = title;
+        this.description = description;
+        this.image = image;
     }
 
     public String getTitle() {
@@ -26,32 +28,5 @@ public class CarouselItemJson {
 
     public String getImage() {
         return image;
-    }
-
-    @JsonPOJOBuilder(withPrefix = "set")
-    public static class Builder {
-        private String title;
-        private String description;
-        private String image;
-
-
-        public Builder setTitle(String title) {
-            this.title = title;
-            return this;
-        }
-
-        public Builder setDescription(String description) {
-            this.description = description;
-            return this;
-        }
-
-        public Builder setImage(String image) {
-            this.image = image;
-            return this;
-        }
-
-        public CarouselItemJson build() {
-            return new CarouselItemJson(this);
-        }
     }
 }

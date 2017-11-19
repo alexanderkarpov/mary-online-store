@@ -1,5 +1,35 @@
-<!--<div ng-controller="AdminCa">-->
-<h4>type {{ formController.itemType }}</h4>
-<p>item {{ formController.item }}</p>
+<form>
+    <div class="form-group">
+        <label for="carousel.item.type">Slide:</label>
+        <input type="text" class="form-control" id="carousel.item.type" ng-model="formController.itemType" disabled>
+    </div>
 
-<!--</div>-->
+    <div class="form-group">
+        <label for="carousel.item.title">Title:</label>
+        <input type="text" class="form-control" id="carousel.item.title" ng-model="formController.item.title">
+    </div>
+
+    <div class="form-group">
+        <label for="carousel.item.description">Description:</label>
+        <textarea class="form-control" rows="3" id="carousel.item.description"
+                  ng-model="formController.item.description">
+        </textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="carousel.item.image">
+            Image:
+        </label>
+        <input type="file" id="carousel.item.image" file-model="formController.files.image" hidden>
+    </div>
+
+    <div class="form-group">
+        <img src="{{formController.imageUrl}}"
+             alt="slide" width="460" height="345">
+    </div>
+
+    <button type="submit" class="btn btn btn-primary"
+            ng-click="formController.submit()">Submit
+    </button>
+</form>
+

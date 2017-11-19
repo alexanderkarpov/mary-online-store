@@ -13,7 +13,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.stream.StreamSupport;
 
 @Component
 public class CarouselServiceImpl implements CarouselService {
@@ -48,20 +47,27 @@ public class CarouselServiceImpl implements CarouselService {
     @Override
     public void update(CarouselItemType id, String title, String description,
                        MultipartFile file) throws IOException {
-        String fileName = imageNameService.getNextName(file.getOriginalFilename());
-        byte[] fileBytes = file.getBytes();
-        File imageFile = new File(fileName);
-        try (FileOutputStream fileOutputStream = new FileOutputStream(imageFile);
-             BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream)) {
-            bufferedOutputStream.write(fileBytes);
-            bufferedOutputStream.flush();
+
+        String imageFilePath;
+        if (file != null) {
+            String fileName = imageNameService.getNextName(file.getOriginalFilename());
+            byte[] fileBytes = file.getBytes();
+            File imageFile = new File(fileName);
+            try (FileOutputStream fileOutputStream = new FileOutputStream(imageFile);
+                 BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream)) {
+                bufferedOutputStream.write(fileBytes);
+                bufferedOutputStream.flush();
+            }
+            imageFilePath = imageFile.getPath();
+        } else {
+            imageFilePath = carouselRepository.findOne(id).getImage();
         }
 
         CarouselItem item = new CarouselItem();
         item.setId(id);
         item.setTitle(title);
         item.setDescription(description);
-        item.setImage(imageFile.getPath());
+        item.setImage(imageFilePath);
 
         carouselRepository.save(item);
     }

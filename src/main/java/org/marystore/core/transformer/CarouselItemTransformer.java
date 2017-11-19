@@ -8,11 +8,7 @@ import org.springframework.stereotype.Component;
 public class CarouselItemTransformer {
 
     public CarouselItemJson transform(CarouselItem item) {
-        return new CarouselItemJson.Builder()
-                .setTitle(item.getTitle())
-                .setDescription(item.getDescription())
-                .setImage(item.getImage())
-                .build();
+        return new CarouselItemJson(item.getTitle(), item.getDescription(), item.getImage());
     }
 
 }
