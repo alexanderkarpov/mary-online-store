@@ -21,27 +21,41 @@
 
         <div class="col-lg-9">
 
-            <div id="myCarousel" class="carousel slide" data-ride="carousel"
-                 ng-controller="CategoriesController as controller">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
-                    <li ng-repeat="category in controller.categories" ng-class="{active:!$index}"
-                        data-target="#myCarousel" data-slide-to="{{$index}}"></li>
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
                 </ol>
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
 
-                    <div ng-repeat="category in controller.categories"
-                         ng-class="{active:!$index}" class="item">
-                        <img ui-sref="public.category({categoryId: category.id})"
-                             src="/user/category/{{category.id}}/large.jpg"
-                             alt="slide" width="460" height="345">
+                    <div class="item active">
+                        <img src="http://placehold.it/900x350" alt="slide" width="460" height="345">
                         <div class="carousel-caption">
-                            <h3>{{category.name}}</h3>
-                            <p>{{category.description}}</p>
+                            <h3>Chania</h3>
+                            <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
                         </div>
                     </div>
+
+                    <div class="item">
+                        <img src="http://placehold.it/900x350" alt="slide" width="460" height="345">
+                        <div class="carousel-caption">
+                            <h3>Chania</h3>
+                            <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img src="http://placehold.it/900x350" alt="slide" width="460" height="345">
+                        <div class="carousel-caption">
+                            <h3>Flowers</h3>
+                            <p>Beautiful flowers in Kolymbari, Crete.</p>
+                        </div>
+                    </div>
+
 
                 </div>
 
