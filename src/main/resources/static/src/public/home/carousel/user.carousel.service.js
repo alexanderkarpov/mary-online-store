@@ -3,7 +3,7 @@
     'use strict';
 
     angular.module('public')
-        .controller('UserCarouselService', UserCarouselService);
+        .service('UserCarouselService', UserCarouselService);
 
     UserCarouselService.$inject = ['$http'];
 

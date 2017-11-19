@@ -21,7 +21,8 @@
 
         <div class="col-lg-9">
 
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel"
+            ng-controller="UserCarouselController as carouselController">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -33,26 +34,26 @@
                 <div class="carousel-inner" role="listbox">
 
                     <div class="item active">
-                        <img src="http://placehold.it/900x350" alt="slide" width="460" height="345">
+                        <img src="{{carouselController.questionnaireImgUrl}}" alt="slide" width="460" height="345">
                         <div class="carousel-caption">
-                            <h3>Chania</h3>
-                            <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                            <h3>{{carouselController.questionnaire.title}}</h3>
+                            <p>{{carouselController.questionnaire.description}}</p>
                         </div>
                     </div>
 
                     <div class="item">
-                        <img src="http://placehold.it/900x350" alt="slide" width="460" height="345">
+                        <img src="{{carouselController.catalogImgUrl}}" alt="slide" width="460" height="345">
                         <div class="carousel-caption">
-                            <h3>Chania</h3>
-                            <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                            <h3>{{carouselController.catalog.title}}</h3>
+                            <p>{{carouselController.catalog.description}}</p>
                         </div>
                     </div>
 
                     <div class="item">
-                        <img src="http://placehold.it/900x350" alt="slide" width="460" height="345">
+                        <img src="{{carouselController.warrantyImgUrl}}" alt="slide" width="460" height="345">
                         <div class="carousel-caption">
-                            <h3>Flowers</h3>
-                            <p>Beautiful flowers in Kolymbari, Crete.</p>
+                            <h3>{{carouselController.warranty.title}}</h3>
+                            <p>{{carouselController.warranty.description}}</p>
                         </div>
                     </div>
 
