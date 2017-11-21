@@ -1,11 +1,15 @@
 package org.marystore.core.domain;
 
+import lombok.Data;
+import lombok.ToString;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+@Data
+@ToString
 @Entity
 public class TextInfo {
 
