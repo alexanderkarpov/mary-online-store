@@ -11,10 +11,16 @@ import java.util.stream.Collectors;
 public class AnswerTransformer {
 
     public AnswerJson transform(Answer src) {
-        return AnswerJson.of(src.getId(), src.getText(),
-                src.getProducts().stream().map(p -> ProductLiteJson.of(p.getId(), p.getCode(), p.getTitle()))
-                        .collect(Collectors.toList()));
-
+        return AnswerJson.builder()
+                .id(src.getId())
+                .text(src.getText())
+                .products(src.getProducts().stream().map(p -> ProductLiteJson.builder()
+                        .id(p.getId())
+                        .code(p.getCode())
+                        .title(p.getTitle())
+                        .build())
+                        .collect(Collectors.toList()))
+                .build();
     }
 
 }

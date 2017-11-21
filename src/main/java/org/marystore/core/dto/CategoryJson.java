@@ -1,32 +1,20 @@
 package org.marystore.core.dto;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import lombok.Builder;
+import lombok.Value;
+
+@Value
+@Builder
+@JsonDeserialize(builder = CategoryJson.CategoryJsonBuilder.class)
 public class CategoryJson {
 
-    private Long id;
-    private String name;
-    private String description;
+    private final Long idCategoryJsonBuilder;
+    private final String name;
+    private final String description;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    @JsonPOJOBuilder(withPrefix = "")
+    public static final class CategoryJsonBuilder {
     }
 }

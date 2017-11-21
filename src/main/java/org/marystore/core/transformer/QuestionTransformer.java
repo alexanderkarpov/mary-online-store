@@ -14,8 +14,12 @@ public class QuestionTransformer {
     private AnswerTransformer answerTransformer;
 
     public QuestionJson transform(Question src) {
-        return QuestionJson.of(src.getId(), src.getText(),
-                src.getAnswers().stream().map(answerTransformer::transform).collect(Collectors.toList()));
+
+        return QuestionJson.builder()
+                .id(src.getId())
+                .text(src.getText())
+                .answers(src.getAnswers().stream().map(answerTransformer::transform).collect(Collectors.toList()))
+                .build();
     }
 
 }

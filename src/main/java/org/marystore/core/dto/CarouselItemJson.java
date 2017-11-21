@@ -1,32 +1,20 @@
 package org.marystore.core.dto;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import lombok.Builder;
+import lombok.Value;
 
+@Value
+@Builder
+@JsonDeserialize(builder = CarouselItemJson.CarouselItemJsonBuilder.class)
 public class CarouselItemJson {
 
     private final String title;
     private final String description;
     private final String image;
 
-    @JsonCreator
-    public CarouselItemJson(@JsonProperty("title") String title,
-                            @JsonProperty("description") String description,
-                            @JsonProperty("image") String image) {
-        this.title = title;
-        this.description = description;
-        this.image = image;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getImage() {
-        return image;
+    @JsonPOJOBuilder(withPrefix = "")
+    public static final class CarouselItemJsonBuilder {
     }
 }

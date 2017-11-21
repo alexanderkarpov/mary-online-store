@@ -1,34 +1,23 @@
 package org.marystore.core.dto;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import lombok.Builder;
+import lombok.Value;
 
 import java.util.List;
 
+@Value
+@Builder
+@JsonDeserialize(builder = CreateAnswerReqJson.CreateAnswerReqJsonBuilder.class)
 public class CreateAnswerReqJson {
 
     private final long questionId;
     private final String text;
     private final List<Long> productIds;
 
-    @JsonCreator
-    public CreateAnswerReqJson(@JsonProperty("questionId") long questionId,
-                               @JsonProperty("text") String text,
-                               @JsonProperty("productIds") List<Long> productIds) {
-        this.questionId = questionId;
-        this.text = text;
-        this.productIds = productIds;
-    }
+    @JsonPOJOBuilder(withPrefix = "")
+    public static final class CreateAnswerReqJsonBuilder {
 
-    public long getQuestionId() {
-        return questionId;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public List<Long> getProductIds() {
-        return productIds;
     }
 }
