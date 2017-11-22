@@ -83,6 +83,10 @@
                 url: '/add',
                 templateUrl: 'src/admin/questionnaire/answers/admin.answers.add.form.html'
             })
+            .state('admin.main.answers.updateanswer', {
+                url: '/update/{answerId}',
+                templateUrl: 'src/admin/questionnaire/answers/admin.answers.add.form.html'
+            })
 
             //Carousel
             .state('admin.main.carousel', {

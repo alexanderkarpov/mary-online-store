@@ -11,6 +11,10 @@
     function AdminAnswersAddFormController(AdminAnswersService, AdminProductsService, $stateParams, $state) {
         const controller = this;
 
+        controller.answerId = $stateParams.answerId;
+
+        console.log("controller.answerId", controller.answerId);
+
         controller.answer = {};
         controller.answer.questionId = $stateParams.questionId;
         controller.productsIndices = [];
@@ -24,6 +28,11 @@
             })
             .catch(error => console.log("something went terribly wrong", error));
 
+        if(controller.answerId) {
+            //TODO: load answer to update
+            const answerId = controller.answerId;
+            console.log("load answer to update", answerId);
+        }
 
         controller.add = () => {
             console.log("answer", controller.answer);
