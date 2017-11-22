@@ -20,6 +20,15 @@
                 .then(response => response.data)
                 .catch(error => console.log("something went terribly wrong", error));
 
+        service.getById = answerId =>
+            $http({
+                method: "GET",
+                url: ("/admin/questionnaire/answer"),
+                params: {id: answerId}
+            })
+                .then(response => response.data)
+                .catch(error => console.log("something went terribly wrong", error));
+
 
         service.add = createAnswerReq => $http({
             method: "POST",
@@ -27,10 +36,16 @@
             data: createAnswerReq
         });
 
+        service.update = updateAnswerReq => $http({
+            method: "PUT",
+            url: ("/admin/questionnaire/answer"),
+            data: updateAnswerReq
+        });
+
         service.delete = answerId => $http({
-           method: "DELETE",
-           url: ("/admin/questionnaire/answer"),
-           params: {id: answerId}
+            method: "DELETE",
+            url: ("/admin/questionnaire/answer"),
+            params: {id: answerId}
         });
 
 

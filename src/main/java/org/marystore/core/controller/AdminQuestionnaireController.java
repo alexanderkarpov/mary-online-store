@@ -1,9 +1,8 @@
 package org.marystore.core.controller;
 
-import org.marystore.core.dto.AnswerJson;
-import org.marystore.core.dto.CreateAnswerReqJson;
-import org.marystore.core.dto.CreateQuestionReqJson;
-import org.marystore.core.dto.QuestionJson;
+import org.marystore.core.domain.Answer;
+import org.marystore.core.dto.*;
+import org.marystore.core.exceptions.ServerErrorException;
 import org.marystore.core.service.QuestionnaireService;
 import org.marystore.core.transformer.AnswerTransformer;
 import org.marystore.core.transformer.QuestionTransformer;
@@ -11,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -55,6 +55,11 @@ public class AdminQuestionnaireController {
     @RequestMapping(value = "/admin/questionnaire/answer", method = RequestMethod.POST)
     public void createAnswer(@RequestBody CreateAnswerReqJson req) {
         questionnaireService.createAnswer(req.getQuestionId(), req.getText(), req.getProductIds());
+    }
+
+    @RequestMapping(value = "/admin/questionnaire/answer", method = RequestMethod.PUT)
+    public void updateAnswer(@RequestBody UpdateAnswerReqJson req) {
+        questionnaireService.updateAnswer(req.getAnswerId(), req.getText(), req.getProductIds());
     }
 
     @RequestMapping(value = "/admin/questionnaire/question", method = RequestMethod.DELETE)

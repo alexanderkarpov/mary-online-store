@@ -91,15 +91,30 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
 
     @Override
     @Transactional
-    public void updateQuestion(Question question) {
+    public void updateAnswer(long answerId, String text, List<Long> productIds) {
+        Answer answer = Optional.ofNullable(answerRepository.findOne(answerId))
+                .orElseThrow(() -> new EntityNotFoundException("answer not found: " + answerId));
 
+        List<Product> products = productIds.stream().map(productRepository::findOne)
+                .map(Optional::ofNullable)
+                .map(o -> o.orElseThrow(() -> new EntityNotFoundException("product not found")))
+                .collect(Collectors.toList());
+
+        Answer answerToUpdate = new Answer();
+        answerToUpdate.setId(answer.getId());
+        answerToUpdate.setQuestion(answer.getQuestion());
+        answerToUpdate.setText(text);
+        answerToUpdate.setProducts(products);
+
+        answerRepository.save(answerToUpdate);
     }
 
     @Override
     @Transactional
-    public void updateAnswer(Answer answer) {
+    public void updateQuestion(long questionId, String text) {
 
     }
+
 
     @Override
     @Transactional

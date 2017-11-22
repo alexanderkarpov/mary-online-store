@@ -1,5 +1,6 @@
 package org.marystore.core.domain;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 

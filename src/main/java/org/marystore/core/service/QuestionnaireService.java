@@ -19,9 +19,9 @@ public interface QuestionnaireService {
 
     void createAnswer(long questionId, String text, List<Long> productIds);
 
-    void updateQuestion(Question question);
+    void updateAnswer(long answerId, String text, List<Long> productIds);
 
-    void updateAnswer(Answer answer);
+    void updateQuestion(long questionId, String text);
 
     void deleteQuestion(long questionId);
 
