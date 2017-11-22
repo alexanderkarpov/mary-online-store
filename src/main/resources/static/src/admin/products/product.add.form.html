@@ -1,46 +1,46 @@
 <h4>new product</h4>
 <form ng-controller="AdminProductUpdateController as controller">
     <div class="form-group">
-        <label for="product.category.id">category id:</label>
+        <label for="product.category.id">Категория:</label>
         <input type="text" class="form-control" id="product.category.id"
                ng-model="controller.product.category.id" disabled>
     </div>
     <div class="form-group">
-        <label for="product.code">Code:</label>
+        <label for="product.code">Артикул:</label>
         <input type="text" class="form-control" id="product.code" ng-model="controller.product.code">
     </div>
     <div class="form-group">
-        <label for="product.name">Name:</label>
+        <label for="product.name">Наименование:</label>
         <input type="text" class="form-control" id="product.name" ng-model="controller.product.title">
     </div>
     <div class="form-group">
-        <label for="product.shortDescription">Short description:</label>
+        <label for="product.shortDescription">Короткое описание:</label>
         <textarea class="form-control" rows="2" id="product.shortDescription"
                   ng-model="controller.product.shortDescription">
         </textarea>
     </div>
     <div class="form-group">
-        <label for="product.description">Description:</label>
+        <label for="product.description">Описание:</label>
         <textarea class="form-control" rows="5" id="product.description" ng-model="controller.product.description">
         </textarea>
     </div>
     <div class="form-group">
-        <label for="product.price">Price:</label>
+        <label for="product.price">Цена:</label>
         <input type="text" class="form-control" id="product.price" ng-model="controller.product.price">
     </div>
     <div class="form-group">
-        <label for="product.price">Rate:</label>
+        <label for="product.price">Рейтинг:</label>
         <input type="text" class="form-control" id="product.rate" ng-model="controller.product.rate">
     </div>
     <div class="form-group">
         <label for="product.image">
-            Image:
+            Изображение:
         </label>
         <input type="file" id="product.image" file-model="controller.files.image" hidden>
     </div>
 
     <button type="submit" class="btn btn btn-primary"
             ui-sref="admin.main.products({categoryId: controller.product.category.id})"
-            ng-click="controller.add()">Submit
+            ng-click="controller.add()">Применить
     </button>
 </form>

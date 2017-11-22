@@ -1,9 +1,8 @@
 <table class="table">
     <thead>
     <tr>
-        <th>id</th>
-        <th>text</th>
-        <th>products</th>
+        <th>текст</th>
+        <th>товары</th>
         <th></th>
         <th></th>
     </tr>
@@ -11,7 +10,6 @@
 
     <tbody>
     <tr ng-repeat="answer in $ctrl.answers">
-        <td>{{ answer.id }}</td>
         <td>{{ answer.text }}</td>
         <td>
             <span ng-repeat="product in answer.products" class="badge admin-product-code"

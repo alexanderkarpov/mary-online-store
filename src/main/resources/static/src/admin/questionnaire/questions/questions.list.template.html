@@ -1,7 +1,6 @@
 <table class="table">
     <thead>
     <tr>
-        <th>id</th>
         <th>text</th>
         <th></th>
         <th></th>
@@ -11,18 +10,17 @@
 
     <tbody>
     <tr ng-repeat="item in $ctrl.items">
-        <td>{{ item.id }}</td>
         <td>{{ item.text }}</td>
         <td>
             <button type="button" class="btn btn-primary"
-                    ui-sref="admin.main.answers.addbutton({questionId: item.id})">Answers
+                    ui-sref="admin.main.answers.addbutton({questionId: item.id})">Ответы
             </button>
         </td>
         <td>
-            <button type="button" class="btn btn-warning">Edit</button>
+            <button type="button" class="btn btn-warning">Редактировать</button>
         </td>
         <td>
-            <button ng-click="$ctrl.onRemove({id: item.id})" type="button" class="btn btn-danger">Remove</button>
+            <button ng-click="$ctrl.onRemove({id: item.id})" type="button" class="btn btn-danger">Удалить</button>
         </td>
     </tr>
     </tbody>

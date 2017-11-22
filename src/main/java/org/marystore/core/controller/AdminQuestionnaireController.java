@@ -1,8 +1,6 @@
 package org.marystore.core.controller;
 
-import org.marystore.core.domain.Answer;
 import org.marystore.core.dto.*;
-import org.marystore.core.exceptions.ServerErrorException;
 import org.marystore.core.service.QuestionnaireService;
 import org.marystore.core.transformer.AnswerTransformer;
 import org.marystore.core.transformer.QuestionTransformer;
@@ -10,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController

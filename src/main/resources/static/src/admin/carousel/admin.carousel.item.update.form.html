@@ -1,16 +1,16 @@
 <form>
     <div class="form-group">
-        <label for="carousel.item.type">Slide:</label>
+        <label for="carousel.item.type">Слайд:</label>
         <input type="text" class="form-control" id="carousel.item.type" ng-model="formController.itemType" disabled>
     </div>
 
     <div class="form-group">
-        <label for="carousel.item.title">Title:</label>
+        <label for="carousel.item.title">Заголовок:</label>
         <input type="text" class="form-control" id="carousel.item.title" ng-model="formController.item.title">
     </div>
 
     <div class="form-group">
-        <label for="carousel.item.description">Description:</label>
+        <label for="carousel.item.description">Текст:</label>
         <textarea class="form-control" rows="3" id="carousel.item.description"
                   ng-model="formController.item.description">
         </textarea>
@@ -18,7 +18,7 @@
 
     <div class="form-group">
         <label for="carousel.item.image">
-            Image:
+            Изображение:
         </label>
         <input type="file" id="carousel.item.image" file-model="formController.files.image" hidden>
     </div>
@@ -29,7 +29,7 @@
     </div>
 
     <button type="submit" class="btn btn btn-primary"
-            ng-click="formController.submit()">Submit
+            ng-click="formController.submit()">Применить
     </button>
 </form>
 

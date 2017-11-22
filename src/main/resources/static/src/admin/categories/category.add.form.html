@@ -1,18 +1,18 @@
 <h4>new category</h4>
 <form ng-controller="AdminCategoryUpdateController as controller">
     <div class="form-group">
-        <label for="category.name">Name:</label>
+        <label for="category.name">Наименование:</label>
         <input type="text" class="form-control" id="category.name" ng-model="controller.category.name">
     </div>
     <div class="form-group">
-        <label for="category.description">Description:</label>
+        <label for="category.description">Описание:</label>
         <textarea class="form-control" rows="5" id="category.description" ng-model="controller.category.description">
         </textarea>
     </div>
     <div class="form-group">
         <!--<label for="category.image">Image:</label>-->
         <label for="category.image">
-            Image:
+            Изображение:
         </label>
         <input type="file" id="category.image" file-model="controller.files.image" hidden>
     </div>

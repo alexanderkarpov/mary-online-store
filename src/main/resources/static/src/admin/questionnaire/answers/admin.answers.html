@@ -1,6 +1,5 @@
-<h4>question:</h4>
-<p>{{answersList.question.text}}</p>
-<h4>answers:</h4>
+<h5><b>Вопрос:</b> {{answersList.question.text}}</h5>
+<h5><b>Ответы:</b></h5>
 <admin-answers-list
         answers="answersList.question.answers"
         on-remove="answersList.remove(id)">
@@ -10,7 +9,6 @@
 <hr>
 <button type="button" class="btn btn-primary"
         ui-sref="admin.main.questions">
-    <!--<span class="glyphicon glyphicon-search"></span>-->
     <span class="glyphicon glyphicon-arrow-left"></span>
-    back to the questions list
+    к списку вопросов
 </button>
