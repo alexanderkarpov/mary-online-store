@@ -1,8 +1,15 @@
 <form>
-    <div class="form-group">
-        <label for="carousel.item.type">Слайд:</label>
-        <input type="text" class="form-control" id="carousel.item.type" ng-model="formController.itemType" disabled>
-    </div>
+    <label for="carousel.item.type">Слайд:</label><br>
+    <select id="carousel.item.type" ng-model="formController.itemType">
+        <option value="questionnaire" ui-sref="admin.main.carousel.item({carouselItemType: 'questionnaire'})">анкета</option>
+        <option value="catalog" ui-sref="admin.main.carousel.item({carouselItemType: 'catalog'})">каталог</option>
+        <option value="warranty" ui-sref="admin.main.carousel.item({carouselItemType: 'warranty'})">гарантии</option>
+    </select>
+
+    <!--<div class="form-group">-->
+        <!--<label for="carousel.item.type">Слайд:</label>-->
+        <!--<input type="text" class="form-control" id="carousel.item.type" ng-model="formController.itemType" disabled>-->
+    <!--</div>-->
 
     <div class="form-group">
         <label for="carousel.item.title">Заголовок:</label>
