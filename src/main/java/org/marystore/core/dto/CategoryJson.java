@@ -10,7 +10,7 @@ import lombok.Value;
 @JsonDeserialize(builder = CategoryJson.CategoryJsonBuilder.class)
 public class CategoryJson {
 
-    private final Long idCategoryJsonBuilder;
+    private final Long id;
     private final String name;
     private final String description;
 

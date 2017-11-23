@@ -2,9 +2,13 @@ package org.marystore.core.controller;
 
 import org.marystore.core.domain.Category;
 import org.marystore.core.domain.Product;
+import org.marystore.core.dto.CategoryJson;
+import org.marystore.core.dto.ProductJson;
 import org.marystore.core.exceptions.ServerErrorException;
 import org.marystore.core.service.CategoryService;
 import org.marystore.core.service.ProductService;
+import org.marystore.core.transformer.CategoryTransformer;
+import org.marystore.core.transformer.ProductTransformer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @RestController
 public class AdminController {
@@ -25,9 +31,17 @@ public class AdminController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private CategoryTransformer categoryTransformer;
+
+    @Autowired
+    private ProductTransformer productTransformer;
+
     @RequestMapping(value = "/admin/category/all", method = RequestMethod.GET)
-    public Iterable<Category> getAllCategories() {
-        return categoryService.getAll();
+    public Iterable<CategoryJson> getAllCategories() {
+        return StreamSupport.stream(categoryService.getAll().spliterator(), false)
+                .map(categoryTransformer::transform)
+                .collect(Collectors.toList());
     }
 
     @RequestMapping(value = "/admin/category/create", method = RequestMethod.POST)
@@ -63,17 +77,23 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin/product/get", method = RequestMethod.GET)
-    public Iterable<Product> getProducts(@RequestParam Long categoryId) {
+    public Iterable<ProductJson> getProducts(@RequestParam Long categoryId) {
         LOGGER.info("Load products by category {}", categoryId);
-        return Optional.ofNullable(categoryId)
+        Iterable<Product> products = Optional.ofNullable(categoryId)
                 .map(productService::getByCategoryId)
                 .orElse(productService.getAll());
+
+        return StreamSupport.stream(products.spliterator(), false)
+                .map(productTransformer::transform)
+                .collect(Collectors.toList());
     }
 
     @RequestMapping(value = "/admin/product/getall", method = RequestMethod.GET)
-    public Iterable<Product> getAllProducts() {
+    public Iterable<ProductJson> getAllProducts() {
         LOGGER.info("Load all products");
-        return productService.getAll();
+        return StreamSupport.stream(productService.getAll().spliterator(), false)
+                .map(productTransformer::transform)
+                .collect(Collectors.toList());
     }
 
     @RequestMapping(value = "/admin/product/delete/{id}", method = RequestMethod.DELETE)
