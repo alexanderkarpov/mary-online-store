@@ -54,6 +54,11 @@ public class AdminQuestionnaireController {
         questionnaireService.createAnswer(req.getQuestionId(), req.getText(), req.getProductIds());
     }
 
+    @RequestMapping(value = "/admin/questionnaire/question", method = RequestMethod.PUT)
+    public void updateQuestion(@RequestBody UpdateQuestionReqJson req) {
+        questionnaireService.updateQuestion(req.getQuestionId(), req.getText());
+    }
+
     @RequestMapping(value = "/admin/questionnaire/answer", method = RequestMethod.PUT)
     public void updateAnswer(@RequestBody UpdateAnswerReqJson req) {
         questionnaireService.updateAnswer(req.getAnswerId(), req.getText(), req.getProductIds());

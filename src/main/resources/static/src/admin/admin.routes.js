@@ -65,6 +65,10 @@
                 url: '/questions/add',
                 templateUrl: 'src/admin/questionnaire/questions/question.add.form.html'
             })
+            .state('admin.main.updatequestion', {
+                url: '/questions/update/{questionId}',
+                templateUrl: 'src/admin/questionnaire/questions/question.add.form.html'
+            })
             .state('admin.main.answers', {
                 url: '/answers/{questionId}',
                 templateUrl: 'src/admin/questionnaire/answers/admin.answers.html',

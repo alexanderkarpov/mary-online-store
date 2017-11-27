@@ -112,7 +112,15 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     @Override
     @Transactional
     public void updateQuestion(long questionId, String text) {
+        Question question = Optional.ofNullable(questionRepository.findOne(questionId))
+                .orElseThrow(() -> new EntityNotFoundException("question not found: " + questionId));
 
+        Question questionToUpdate = new Question();
+        questionToUpdate.setId(questionId);
+        questionToUpdate.setText(text);
+        questionToUpdate.setAnswers(question.getAnswers());
+
+        questionRepository.save(questionToUpdate);
     }
 
 

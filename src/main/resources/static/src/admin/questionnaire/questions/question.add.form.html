@@ -1,13 +1,17 @@
-<h4>new question</h4>
 <form ng-controller="AdminQuestionsCreateController as controller">
+    <h4>question id: {{ controller.questionId }}</h4>
     <div class="form-group">
         <label for="question.text">Text:</label>
         <textarea class="form-control" rows="4" id="question.text"
                   ng-model="controller.question.text">
         </textarea>
     </div>
-    <button type="submit" class="btn btn btn-primary"
+    <button type="submit" class="btn btn-primary"
             ui-sref="admin.main.questions"
-            ng-click="controller.add()">Применить
+            ng-click="controller.update()">Применить
+    </button>
+
+    <button type="submit" class="btn btn-danger"
+            ui-sref="admin.main.questions">Отмена
     </button>
 </form>

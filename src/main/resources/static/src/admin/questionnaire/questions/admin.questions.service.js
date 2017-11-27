@@ -40,6 +40,14 @@
             })
         };
 
+        service.update = function (question) {
+            return $http({
+                method: "PUT",
+                url: ("/admin/questionnaire/question"),
+                data: question
+            })
+        };
+
         service.delete = function (id) {
             return $http({
                 method: "DELETE",

@@ -1,6 +1,6 @@
 <form>
     <label for="carousel.item.type">Слайд:</label><br>
-    <select id="carousel.item.type" ng-model="formController.itemType">
+    <select id="carousel.item.type" ng-model="formController.itemType" disabled>
         <option value="questionnaire" ui-sref="admin.main.carousel.item({carouselItemType: 'questionnaire'})">анкета</option>
         <option value="catalog" ui-sref="admin.main.carousel.item({carouselItemType: 'catalog'})">каталог</option>
         <option value="warranty" ui-sref="admin.main.carousel.item({carouselItemType: 'warranty'})">гарантии</option>

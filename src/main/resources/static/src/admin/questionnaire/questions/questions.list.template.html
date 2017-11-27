@@ -1,7 +1,7 @@
 <table class="table">
     <thead>
     <tr>
-        <th>text</th>
+        <th>текст</th>
         <th></th>
         <th></th>
         <th></th>
@@ -17,7 +17,8 @@
             </button>
         </td>
         <td>
-            <button type="button" class="btn btn-warning">Редактировать</button>
+            <button type="button" class="btn btn-warning"
+                    ui-sref="admin.main.updatequestion({questionId: item.id})">Редактировать</button>
         </td>
         <td>
             <button ng-click="$ctrl.onRemove({id: item.id})" type="button" class="btn btn-danger">Удалить</button>

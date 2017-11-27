@@ -1,0 +1,19 @@
+package org.marystore.core.dto;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import lombok.Builder;
+import lombok.Value;
+
+@Value
+@Builder
+@JsonDeserialize(builder = UpdateQuestionReqJson.UpdateQuestionReqJsonBuilder.class)
+public class UpdateQuestionReqJson {
+
+    long questionId;
+    String text;
+
+    @JsonPOJOBuilder(withPrefix = "")
+    public static final class UpdateQuestionReqJsonBuilder {
+    }
+}
