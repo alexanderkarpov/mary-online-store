@@ -49,6 +49,10 @@
                 url: '/products/category/{categoryId}/add',
                 templateUrl: 'src/admin/products/product.add.form.html'
             })
+            .state('admin.main.updateproduct', {
+                url: '/products/category/{categoryId}/update/{productId}',
+                templateUrl: 'src/admin/products/product.add.form.html'
+            })
 
             //questionnaire
             .state('admin.main.questions', {

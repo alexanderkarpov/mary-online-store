@@ -1,5 +1,9 @@
-<h4>new product</h4>
 <form ng-controller="AdminProductUpdateController as controller">
+    <div>
+        <p ng-if="controller.productId">productId: {{ controller.productId }}</p>
+        <p>categoryId: {{ controller.product.category.id }}</p>
+    </div>
+
     <div class="form-group">
         <label for="product.category.id">Категория:</label>
         <input type="text" class="form-control" id="product.category.id"
@@ -33,14 +37,22 @@
         <input type="text" class="form-control" id="product.rate" ng-model="controller.product.rate">
     </div>
     <div class="form-group">
-        <label for="product.image">
-            Изображение:
-        </label>
+        <label for="product.image">Изображение:</label>
+        <div>
+            <img ng-if="controller.productId" src="/user/product/{{controller.productId}}/large.jpg"
+                 alt="product img" height="150px">
+        </div>
         <input type="file" id="product.image" file-model="controller.files.image" hidden>
     </div>
 
     <button type="submit" class="btn btn btn-primary"
             ui-sref="admin.main.products({categoryId: controller.product.category.id})"
-            ng-click="controller.add()">Применить
+            ng-click="controller.add()">
+        Применить
+    </button>
+
+    <button type="submit" class="btn btn btn-danger"
+            ui-sref="admin.main.products({categoryId: controller.product.category.id})">
+        Отмена
     </button>
 </form>

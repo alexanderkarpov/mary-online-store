@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.persistence.EntityNotFoundException;
 import java.io.IOException;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -76,7 +77,7 @@ public class AdminController {
         }
     }
 
-    @RequestMapping(value = "/admin/product/get", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/product/get-by-category", method = RequestMethod.GET)
     public Iterable<ProductJson> getProducts(@RequestParam Long categoryId) {
         LOGGER.info("Load products by category {}", categoryId);
         Iterable<Product> products = Optional.ofNullable(categoryId)
@@ -88,12 +89,19 @@ public class AdminController {
                 .collect(Collectors.toList());
     }
 
-    @RequestMapping(value = "/admin/product/getall", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/product/get-all", method = RequestMethod.GET)
     public Iterable<ProductJson> getAllProducts() {
         LOGGER.info("Load all products");
         return StreamSupport.stream(productService.getAll().spliterator(), false)
                 .map(productTransformer::transform)
                 .collect(Collectors.toList());
+    }
+
+    @RequestMapping(value = "/admin/product/get", method = RequestMethod.GET)
+    public ProductJson getProductById(@RequestParam long productId) {
+        return Optional.ofNullable(productService.get(productId))
+                .map(productTransformer::transform)
+                .orElseThrow(() -> new EntityNotFoundException("product " + productId));
     }
 
     @RequestMapping(value = "/admin/product/delete/{id}", method = RequestMethod.DELETE)

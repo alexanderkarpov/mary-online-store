@@ -27,7 +27,6 @@
                 console.log("products loaded", data);
 
                 if (controller.answerId) {
-                    //TODO: load answer to update
                     const answerId = controller.answerId;
                     console.log("load answer to update", answerId);
                     AdminAnswersService.getById(answerId)

@@ -24,8 +24,13 @@
         <td>{{ item.rate }}</td>
         <td><img src="/user/product/{{item.id}}/large.jpg" alt="product img" height="80px"></td>
         <td>{{ item.category.id }}</a></td>
-        <td><button type="button" class="btn btn-warning">Редактировать</button></td>
-        <td><button ng-click="$ctrl.onRemove({id: item.id})" type="button" class="btn btn-danger">Удалить</button></td>
+        <td><button type="button" class="btn btn-warning"
+                    ui-sref="admin.main.updateproduct({productId: item.id, categoryId: item.category.id})">
+            Редактировать
+        </button></td>
+        <td><button ng-click="$ctrl.onRemove({id: item.id})" type="button" class="btn btn-danger">
+            Удалить
+        </button></td>
     </tr>
     </tbody>
 </table>

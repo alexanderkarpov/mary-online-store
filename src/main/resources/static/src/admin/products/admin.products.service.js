@@ -12,7 +12,7 @@
         service.getByCategoryId = function (categoryId) {
             return $http({
                 method: "GET",
-                url: ("/admin/product/get"),
+                url: ("/admin/product/get-by-category"),
                 params: {categoryId: categoryId}
             }).then(function (response) {
                 return response.data;
@@ -24,13 +24,22 @@
         service.getAll = function (){
             return $http({
                 method: "GET",
-                url: ("/admin/product/getall")
+                url: ("/admin/product/get-all")
             }).then(function (response) {
                 return response.data;
             }).catch(function (error) {
                 console.log("something went terribly wrong", error);
             });
         };
+
+        service.getById = id =>
+            $http({
+                method: "GET",
+                url: ("/admin/product/get"),
+                params: {productId: id}
+            })
+                .then(response => response.data)
+                .catch(error => console.log("something went terribly wrong", error));
 
         service.add = function (product, imageFile) {
             return FileUploadService.uploadFile(imageFile, product, "/admin/product/create");
